@@ -69,6 +69,74 @@ document.addEventListener("DOMContentLoaded", () => {
         input.classList.remove("is-invalid");
     }
 
+    function mostrarAviso(texto, esError = false) {
+        const aviso = document.createElement("div");
+
+        aviso.textContent = texto;
+
+        aviso.style.position = "fixed";
+        aviso.style.top = "50%";
+        aviso.style.left = "50%";
+        aviso.style.transform = "translate(-50%, -50%)";
+        aviso.style.padding = "18px 28px";
+        aviso.style.borderRadius = "12px";
+        aviso.style.fontWeight = "700";
+        aviso.style.fontSize = "1.1rem";
+        aviso.style.zIndex = "9999";
+        aviso.style.boxShadow = "0 8px 20px rgba(0,0,0,.25)";
+        aviso.style.backgroundColor = esError ? "#c1121f" : "#2e7d32";
+        aviso.style.color = "#fff";
+        aviso.style.minWidth = "320px";
+        aviso.style.textAlign = "center";
+
+        document.body.appendChild(aviso);
+
+        setTimeout(() => {
+            aviso.remove();
+        }, 2000);
+    }
+
+
+    /* funcion de confirmar si eliminas un empleado*/
+    function confirmar(titulo, texto) {
+        return new Promise((resolve) => {
+
+            const fondo = document.createElement("div");
+            fondo.className = "modal-confirm-bg";
+
+            fondo.innerHTML = `
+            <div class="modal-confirm">
+                <h3>${titulo}</h3>
+                <p>${texto}</p>
+
+                <div class="btn-row">
+                    <button class="btn" id="btnConfirmarSi">
+                        Aceptar
+                    </button>
+
+                    <button class="btn btn--outline" id="btnConfirmarNo">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        `;
+
+            document.body.appendChild(fondo);
+
+            document.getElementById("btnConfirmarSi")
+                .addEventListener("click", () => {
+                    fondo.remove();
+                    resolve(true);
+                });
+
+            document.getElementById("btnConfirmarNo")
+                .addEventListener("click", () => {
+                    fondo.remove();
+                    resolve(false);
+                });
+        });
+    }
+
     /* =========================
        VALIDACIONES CREAR
        ========================= */
@@ -171,15 +239,21 @@ document.addEventListener("DOMContentLoaded", () => {
         msg.style.display = "none";
 
         const ok =
-            validarNombre() &
-            validarApellido() &
-            validarEmail() &
-            validarTlf() &
-            validarRol() &
-            validarPassword() &
+            validarNombre() &&
+            validarApellido() &&
+            validarEmail() &&
+            validarTlf() &&
+            validarRol() &&
+            validarPassword() &&
             validarPassword2();
 
-        if (!ok) return;
+        if (!ok) {
+            mostrarAviso(
+                "❌ No se puede crear empleado. Revisa los datos.",
+                true
+            );
+            return;
+        }
 
         btnCrear.disabled = true;
         btnCrear.textContent = "Creando...";
@@ -225,15 +299,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             tabla.appendChild(tr);
 
-            msg.textContent = "✅ Empleado creado correctamente.";
-            msg.style.display = "block";
-            msg.style.color = "var(--color-blue)";
+            mostrarAviso(
+                "✅ Empleado creado correctamente"
+            );
             formCrear.reset();
 
         } catch {
-            msg.textContent = "❌ Error al crear empleado.";
-            msg.style.display = "block";
-            msg.style.color = "var(--color-red)";
+            mostrarAviso(
+                "❌ No se puede crear empleado. Revisa los datos.",
+                true
+            );
         } finally {
             btnCrear.disabled = false;
             btnCrear.textContent = "Crear empleado";
@@ -262,7 +337,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (btn.dataset.action === "delete") {
-            if (!confirm("¿Eliminar empleado?")) return;
+            const ok = await confirmar(
+                "Eliminar empleado",
+                "¿Seguro que quieres eliminar este empleado?"
+            );
+
+            if (!ok) return;
 
             const res = await fetch("/BarApp/api/empleados_api.php", {
                 method: "POST",
@@ -271,8 +351,19 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             const data = await res.json();
-            if (data.ok) tr.remove();
-            else alert("❌ No se pudo eliminar");
+
+            if (data.ok) {
+                tr.remove();
+
+                mostrarAviso(
+                    "✅ Empleado eliminado correctamente"
+                );
+            } else {
+                mostrarAviso(
+                    "❌ No se pudo eliminar el empleado",
+                    true
+                );
+            }
         }
     });
 
@@ -284,12 +375,18 @@ document.addEventListener("DOMContentLoaded", () => {
         msgEdit.style.display = "none";
 
         const ok =
-            validarEditNombre() &
-            validarEditApellido() &
-            validarEditTlf() &
+            validarEditNombre() &&
+            validarEditApellido() &&
+            validarEditTlf() &&
             validarEditRol();
 
-        if (!ok) return;
+        if (!ok) {
+            mostrarAviso(
+                "❌ No se puede actualizar el empleado. Revisa los datos.",
+                true
+            );
+            return;
+        }
 
         const res = await fetch("/BarApp/api/empleados_api.php", {
             method: "POST",
@@ -306,9 +403,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const data = await res.json();
         if (!data.ok) {
-            msgEdit.textContent = "❌ Error al guardar";
-            msgEdit.style.display = "block";
-            msgEdit.style.color = "var(--color-red)";
+            mostrarAviso(
+                "❌ No se pudo actualizar el empleado",
+                true
+            );
             return;
         }
 
@@ -324,9 +422,9 @@ document.addEventListener("DOMContentLoaded", () => {
         tr.querySelector(".td-rol").innerHTML =
             `<span class="badge">${data.empleado.rol}</span>`;
 
-        msgEdit.textContent = "✅ Cambios guardados";
-        msgEdit.style.display = "block";
-        msgEdit.style.color = "var(--color-blue)";
+        mostrarAviso(
+            "✅ Empleado actualizado correctamente"
+        );
 
         // Cerrar automáticamente la sección de edición
         setTimeout(() => {

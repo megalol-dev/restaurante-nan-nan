@@ -135,7 +135,7 @@ $_SESSION['cliente_nombre'] = $_SESSION['cliente_nombre'] ?? $clienteEmail;
           <button class="btn btn--outline" type="button" onclick="location.href='logout.php'">Cerrar sesión</button>
         </div>
 
-        <p id="msgReserva" class="msg" style="display:none;"></p>
+        <p id="msgReserva" class="msg msg-reserva" style="display:none;"></p>
       </form>
 
       <!-- ✅ NUEVO: tabla de reservas activas -->

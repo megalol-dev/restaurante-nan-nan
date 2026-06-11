@@ -35,10 +35,31 @@ document.addEventListener("DOMContentLoaded", () => {
         msg.style.display = "none";
     }
 
-    function showMsg(text, ok = true) {
-        msg.textContent = text;
-        msg.style.display = "block";
-        msg.style.color = ok ? "var(--color-blue)" : "var(--color-red)";
+    function mostrarAviso(texto, esError = false) {
+        const aviso = document.createElement("div");
+
+        aviso.textContent = texto;
+
+        aviso.style.position = "fixed";
+        aviso.style.top = "50%";
+        aviso.style.left = "50%";
+        aviso.style.transform = "translate(-50%, -50%)";
+        aviso.style.padding = "18px 28px";
+        aviso.style.borderRadius = "12px";
+        aviso.style.fontWeight = "700";
+        aviso.style.fontSize = "1.1rem";
+        aviso.style.zIndex = "9999";
+        aviso.style.boxShadow = "0 8px 20px rgba(0,0,0,.25)";
+        aviso.style.backgroundColor = esError ? "#c1121f" : "#2e7d32";
+        aviso.style.color = "#fff";
+        aviso.style.minWidth = "320px";
+        aviso.style.textAlign = "center";
+
+        document.body.appendChild(aviso);
+
+        setTimeout(() => {
+            aviso.remove();
+        }, 2000);
     }
 
     async function api(payload) {
@@ -100,11 +121,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const t = texto.value.trim();
 
         if (!Number.isFinite(p) || p < 1 || p > 5) {
-            showMsg("❌ Puntuación inválida (1-5).", false);
+            mostrarAviso("❌ Puntuación inválida (1-5).", true);
             return;
         }
         if (t.length < 5) {
-            showMsg("❌ Escribe un poco más (mínimo 5 caracteres).", false);
+            mostrarAviso(
+                "❌ Escribe un poco más (mínimo 5 caracteres).",
+                true
+            );
             return;
         }
 
@@ -112,6 +136,9 @@ document.addEventListener("DOMContentLoaded", () => {
         btnGuardar.textContent = "Guardando...";
 
         try {
+            const estabaEditando =
+                btnTop.textContent.includes("editar");
+
             await api({
                 action: "my_save",
                 nombre_publico: nombre.value.trim(),
@@ -119,13 +146,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 texto: t,
             });
 
-            showMsg("✅ Reseña guardada.", true);
             await cargarMiResena();
 
-            // cerrar tras guardar
-            setTimeout(closeModal, 350);
+            mostrarAviso(
+                estabaEditando
+                    ? "✅ Reseña actualizada correctamente"
+                    : "✅ Reseña publicada correctamente"
+            );
+
+            setTimeout(closeModal, 1500);
+            
         } catch (err) {
-            showMsg("❌ " + (err.message || "No se pudo guardar."), false);
+            mostrarAviso(
+                "❌ " + (err.message || "No se pudo guardar."),
+                true
+            );
         } finally {
             btnGuardar.disabled = false;
             btnGuardar.textContent = "Guardar reseña";

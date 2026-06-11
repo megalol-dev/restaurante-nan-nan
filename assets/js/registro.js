@@ -63,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
           <button class="btn btn--outline" type="button" id="btnVolver">Volver a inicio</button>
         </div>
 
-        <p id="msg" style="display:none; margin-top:12px; font-weight:700;"></p>
       </form>
     </section>
   `;
@@ -90,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const errPassword = $("errPassword");
     const errPassword2 = $("errPassword2");
 
-    const msg = $("msg");
     const btnSubmit = $("btnSubmit");
 
     /* lógica del formulario: muestra error y marca el input como inválido */
@@ -204,18 +202,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Envío real a PHP
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        msg.style.display = "none";
 
         /* lógica del formulario: validar todo antes de enviar */
         const ok =
-            validarNombre() &
-            validarApellidos() &
-            validarEmail() &
-            validarTelefono() &
-            validarPassword() &
+            validarNombre() &&
+            validarApellidos() &&
+            validarEmail() &&
+            validarTelefono() &&
+            validarPassword() &&
             validarPassword2();
 
-        if (!ok) return;
+        if (!ok) {
+            mostrarAviso(
+                "❌ No se puede crear la cuenta. Revisa los datos.",
+                true
+            );
+            return;
+        }
 
         btnSubmit.disabled = true;
         btnSubmit.textContent = "Registrando...";
@@ -240,26 +243,68 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await res.json();
 
             if (!res.ok || !data.ok) {
-                msg.textContent = "❌ " + (data.error || "Error al registrar.");
-                msg.style.display = "block";
-                msg.style.color = "#c1121f";
+                mostrarAviso(
+                    "❌ No se puede crear la cuenta. Revisa los datos.",
+                    true
+                );
                 return;
             }
 
-            msg.textContent = "✅ Registro completado. Ahora puedes iniciar sesión.";
-            msg.style.display = "block";
-            msg.style.color = "#003049";
+            mostrarAviso(
+                "✅ Cuenta creada. Ahora puedes iniciar sesión."
+            );
+
             form.reset();
 
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+            setTimeout(() => {
+                window.location.href = "login.php";
+            }, 2000);
+
         } catch (err) {
-            msg.textContent = "❌ Error de red o servidor.";
-            msg.style.display = "block";
-            msg.style.color = "#c1121f";
+            console.error(err);
+
+            mostrarAviso(
+                "❌ Error interno del servidor.",
+                true
+            );
         } finally {
             btnSubmit.disabled = false;
             btnSubmit.textContent = "Aceptar registro";
         }
     });
+
+
+    function mostrarAviso(texto, esError = false) {
+        const aviso = document.createElement("div");
+
+        aviso.textContent = texto;
+
+        aviso.style.position = "fixed";
+        aviso.style.top = "50%";
+        aviso.style.left = "50%";
+        aviso.style.transform = "translate(-50%, -50%)";
+        aviso.style.padding = "18px 28px";
+        aviso.style.borderRadius = "12px";
+        aviso.style.fontWeight = "700";
+        aviso.style.fontSize = "1.1rem";
+        aviso.style.zIndex = "9999";
+        aviso.style.boxShadow = "0 8px 20px rgba(0,0,0,.25)";
+        aviso.style.backgroundColor = esError ? "#c1121f" : "#2e7d32";
+        aviso.style.color = "#fff";
+        aviso.style.minWidth = "320px";
+        aviso.style.textAlign = "center";
+
+        document.body.appendChild(aviso);
+
+        setTimeout(() => {
+            aviso.remove();
+        }, 2000);
+    }
 });
 
 

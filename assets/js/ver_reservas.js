@@ -29,15 +29,154 @@ document.addEventListener("DOMContentLoaded", () => {
             fecha = inputFecha.value;
             msg.style.display = "none";
             await cargarTodo();
-            showMsg(`📅 Mostrando reservas para: ${fecha}`, true);
         });
     }
 
-    const showMsg = (text, ok = true) => {
-        msg.textContent = text;
-        msg.style.display = "block";
-        msg.style.color = ok ? "var(--color-blue)" : "var(--color-red)";
-    };
+    function mostrarAviso(texto, esError = false) {
+        const aviso = document.createElement("div");
+
+        aviso.textContent = texto;
+
+        aviso.style.position = "fixed";
+        aviso.style.top = "50%";
+        aviso.style.left = "50%";
+        aviso.style.transform = "translate(-50%, -50%)";
+        aviso.style.padding = "18px 28px";
+        aviso.style.borderRadius = "12px";
+        aviso.style.fontWeight = "700";
+        aviso.style.fontSize = "1.1rem";
+        aviso.style.zIndex = "9999";
+        aviso.style.boxShadow = "0 8px 20px rgba(0,0,0,.25)";
+        aviso.style.backgroundColor = esError ? "#c1121f" : "#2e7d32";
+        aviso.style.color = "#fff";
+        aviso.style.minWidth = "320px";
+        aviso.style.textAlign = "center";
+
+        document.body.appendChild(aviso);
+
+        setTimeout(() => {
+            aviso.remove();
+        }, 2000);
+    }
+
+    function confirmar(titulo, texto) {
+        return new Promise((resolve) => {
+
+            const fondo = document.createElement("div");
+            fondo.className = "modal-confirm-bg";
+
+            fondo.innerHTML = `
+            <div class="modal-confirm">
+                <h3>${titulo}</h3>
+                <p>${texto}</p>
+
+                <div class="btn-row">
+                    <button class="btn" id="btnConfirmarSi">
+                        Aceptar
+                    </button>
+
+                    <button class="btn btn--outline" id="btnConfirmarNo">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        `;
+
+            document.body.appendChild(fondo);
+
+            document.getElementById("btnConfirmarSi")
+                .addEventListener("click", () => {
+                    fondo.remove();
+                    resolve(true);
+                });
+
+            document.getElementById("btnConfirmarNo")
+                .addEventListener("click", () => {
+                    fondo.remove();
+                    resolve(false);
+                });
+        });
+    }
+
+
+    function pedirDatosReserva(turno, fecha) {
+        return new Promise((resolve) => {
+
+            const fondo = document.createElement("div");
+            fondo.className = "modal-confirm-bg";
+
+            fondo.innerHTML = `
+            <div class="modal-confirm">
+
+                <h3>Nueva reserva</h3>
+
+                <p>
+                    Turno: ${turno}<br>
+                    Fecha: ${fecha}
+                </p>
+
+                <input
+                    id="clienteReserva"
+                    class="input"
+                    placeholder="Nombre cliente"
+                    style="width:100%;margin-bottom:12px;"
+                >
+
+                <input
+                    id="comensalesReserva"
+                    class="input"
+                    type="number"
+                    min="1"
+                    max="50"
+                    value="2"
+                    placeholder="Comensales"
+                    style="width:100%;margin-bottom:12px;"
+                >
+
+                <div class="btn-row">
+                    <button class="btn" id="btnReservaAceptar">
+                        Reservar
+                    </button>
+
+                    <button class="btn btn--outline" id="btnReservaCancelar">
+                        Cancelar
+                    </button>
+                </div>
+
+            </div>
+        `;
+
+            document.body.appendChild(fondo);
+
+            document.getElementById("btnReservaAceptar")
+                .addEventListener("click", () => {
+
+                    const cliente =
+                        document.getElementById("clienteReserva")
+                            .value
+                            .trim();
+
+                    const comensales =
+                        Number(
+                            document.getElementById("comensalesReserva")
+                                .value
+                        );
+
+                    fondo.remove();
+
+                    resolve({
+                        cliente,
+                        comensales
+                    });
+                });
+
+            document.getElementById("btnReservaCancelar")
+                .addEventListener("click", () => {
+                    fondo.remove();
+                    resolve(null);
+                });
+        });
+    }
 
     async function api(payload) {
         const res = await fetch("/BarApp/api/reservas_api.php", {
@@ -104,15 +243,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             if (!ocupada) {
-                const cliente = prompt(`Nombre del cliente (turno: ${turno})\nFecha: ${fecha}`);
+                const datos = await pedirDatosReserva(
+                    turno,
+                    fecha
+                );
+
+                if (!datos) return;
+
+                const cliente = datos.cliente;
+                const comensales = datos.comensales;
+
                 if (!cliente) return;
 
-                const comStr = prompt("Número de comensales (1-50):", "2");
-                if (comStr === null) return;
-
-                const comensales = Number(comStr);
-                if (!Number.isFinite(comensales) || comensales < 1 || comensales > 50) {
-                    showMsg("❌ Comensales inválido (1-50).", false);
+                if (
+                    !Number.isFinite(comensales) ||
+                    comensales < 1 ||
+                    comensales > 50
+                ) {
+                    mostrarAviso(
+                        "❌ Comensales inválido (1-50).",
+                        true
+                    );
                     return;
                 }
 
@@ -128,11 +279,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (turno === "comida") pintar(gridComida, data.state);
                 else pintar(gridCena, data.state);
 
-                showMsg(`✅ Reserva creada (${turno}) para ${fecha}. Mesas asignadas: ${data.mesas_asignadas.join(", ")}`);
+                mostrarAviso(
+                    "✅ Reserva creada correctamente"
+                );
                 return;
             }
 
-            const ok = confirm(`Mesa ocupada.\n¿Cancelar/Liberar la reserva del turno "${turno}"?\nFecha: ${fecha}`);
+            const ok = await confirmar(
+                "Liberar reserva",
+                `¿Cancelar la reserva del turno ${turno}?`
+            );
             if (!ok) return;
 
             const data = await api({ action: "liberar", fecha, turno, mesa_id: mesaId });
@@ -140,9 +296,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (turno === "comida") pintar(gridComida, data.state);
             else pintar(gridCena, data.state);
 
-            showMsg(`✅ Mesa liberada (${turno}) para ${fecha}.`);
+            mostrarAviso(
+                "✅ Reserva cancelada correctamente"
+            );
         } catch (err) {
-            showMsg("❌ " + (err.message || "Error"), false);
+            mostrarAviso(
+                "❌ " + (err.message || "Error"),
+                true
+            );
         }
     }
 

@@ -48,6 +48,46 @@ document.addEventListener("DOMContentLoaded", () => {
         msgRes.style.color = ok ? "var(--color-blue)" : "var(--color-red)";
     }
 
+
+    function confirmar(titulo, texto) {
+        return new Promise((resolve) => {
+
+            const fondo = document.createElement("div");
+            fondo.className = "modal-confirm-bg";
+
+            fondo.innerHTML = `
+            <div class="modal-confirm">
+                <h3>${titulo}</h3>
+                <p>${texto}</p>
+
+                <div class="btn-row">
+                    <button class="btn" id="btnConfirmarSi">
+                        Aceptar
+                    </button>
+
+                    <button class="btn btn--outline" id="btnConfirmarNo">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        `;
+
+            document.body.appendChild(fondo);
+
+            document.getElementById("btnConfirmarSi")
+                .addEventListener("click", () => {
+                    fondo.remove();
+                    resolve(true);
+                });
+
+            document.getElementById("btnConfirmarNo")
+                .addEventListener("click", () => {
+                    fondo.remove();
+                    resolve(false);
+                });
+        });
+    }
+
     function setResFormEnabled(enabled) {
         if (!formRes) return;
 
@@ -284,8 +324,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const n = resumen.cena;
 
         const txt = `Disponibilidad para ${fecha.value}:
-🍽️ Comida: ${c.disponibles} mesas (${c.capacidad_restante} personas)
-🌙 Cena: ${n.disponibles} mesas (${n.capacidad_restante} personas)`;
+            🍽️ Comida: ${c.disponibles} mesas (${c.capacidad_restante} personas)
+            🌙 Cena: ${n.disponibles} mesas (${n.capacidad_restante} personas)`;
 
         infoStock.textContent = txt;
 
@@ -365,7 +405,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const rid = Number(btn.dataset.cancelarReserva);
             if (!rid) return;
 
-            const ok = confirm("¿Seguro que quieres cancelar esta reserva?");
+            const ok = await confirmar(
+                "Cancelar reserva",
+                "¿Seguro que quieres cancelar esta reserva?"
+            );
             if (!ok) return;
 
             const oldText = btn.textContent;

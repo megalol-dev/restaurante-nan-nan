@@ -30,7 +30,7 @@ session_start();
       <h2 class="res-title">Iniciar sesión</h2>
       <p class="res-sub">Accede con tu email y contraseña.</p>
 
-      <form id="formLogin" novalidate>
+      <form id="formLogin" novalidate autocomplete="off">
         <div class="field">
           <label for="email">Email *</label>
           <input

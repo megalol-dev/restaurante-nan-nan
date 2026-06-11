@@ -3,6 +3,8 @@
     --color-blue: #6b3e26;
     --color-white: #ffffff;
 
+    --color-error: #ff0707;
+
     --bg: #f6f7fb;
     --text: #1c1c1c;
     --muted: #6b7280;
@@ -36,10 +38,20 @@ body {
 }
 
 /* HEADER */
+/* ===== BANNER GLOBAL (TODAS LAS PÁGINAS) ===== */
 .site-header {
-    background: var(--color-blue);
-    color: var(--color-white);
-    padding: 22px 0;
+    position: relative;
+    min-height: 180px;
+    background-image: url('../img/banner1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
 }
 
 .brand {
@@ -248,7 +260,8 @@ body {
 
 .error {
     display: block;
-    color: var(--color-red);
+    color: var(--color-error);
+    font-weight: 700;
     min-height: 18px;
     margin-top: 6px;
 }
@@ -917,22 +930,6 @@ textarea:focus {
     color: #000;
 }
 
-/* ===== BANNER GLOBAL (TODAS LAS PÁGINAS) ===== */
-.site-header {
-    position: relative;
-    height: 420px;
-    /* MISMA ALTURA EN TODAS */
-    background-image: url('../img/banner1.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #fff;
-}
 
 /* Contenedor interno centrado */
 .site-header .container {
@@ -1067,7 +1064,7 @@ textarea:focus {
 }
 
 .reviews-home__panel {
-    padding: 18px;
+    padding: 22px;
     border-radius: 18px;
 
     background: rgba(255, 255, 255, 0.75);
@@ -1088,7 +1085,7 @@ textarea:focus {
 }
 
 .reviews-home__actions {
-    margin-top: 14px;
+    margin-top: 22px;
 }
 
 .menu-dia__title {
@@ -1285,6 +1282,17 @@ button[data-cancelar-reserva]:hover {
     color: #fff;
 }
 
+/*Mensaje de mesas reservadas por clientes*/
+.msg-reserva {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+
+    background: #fff5f5;
+    border: 1px solid #ffb3b3;
+}
+
 /* === FORMULARIOS ADMIN (CREAR EMPLEADO) === */
 .card form input,
 .card form select,
@@ -1334,7 +1342,7 @@ input[type="date"]:focus {
     color: #444;
 }
 
-.card small {
+.card small:not(.error) {
     color: #444;
 }
 
@@ -1387,7 +1395,37 @@ input[type="date"]:focus {
     box-shadow: 0 0 0 3px rgba(107, 62, 38, 0.18) !important;
 }
 
+.modal-confirm-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 99999;
+}
+
+/* cuadro de dialogo para cancelar opciones*/
+.modal-confirm-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.modal-confirm {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    width: 420px;
+    max-width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+}
 
 /*gestion de reservar*/
 /* ==============================
