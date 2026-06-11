@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 password: password.value
             };
 
-            const res = await fetch("login_api.php", {
+            const res = await fetch("api/login_api.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)

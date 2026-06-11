@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!cont) return;
 
     try {
-        const res = await fetch("resenas_api.php", {
+        const res = await fetch("api/resenas_api.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ action: "latest", limit: 5 }),

@@ -135,7 +135,7 @@
                 "Tú vas confianza... lo que tú veas... Para reservar mesa, regístrate e inicia sesión.";
 
             try {
-                const res = await fetch("frase_web_api.php", {
+                const res = await fetch("api/frase_web_api.php", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ action: "get" }),

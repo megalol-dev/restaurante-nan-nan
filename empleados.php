@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 session_start();
-require __DIR__ . '/db.php';
+require __DIR__ . '/database/db.php';
 
 /* Solo trabajadores con rol jefe/encargado */
 if (empty($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] !== 'trabajador') {

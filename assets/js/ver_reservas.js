@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     async function api(payload) {
-        const res = await fetch("reservas_api.php", {
+        const res = await fetch("api/reservas_api.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),

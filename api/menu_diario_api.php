@@ -2,7 +2,7 @@
 declare(strict_types=1);
 session_start();
 
-require __DIR__ . '/db.php';
+require __DIR__ . '/database/db.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -225,13 +225,13 @@ try {
   http_response_code(400);
   echo json_encode(['ok'=>false,'error'=>'Acción inválida']);
 } catch (Throwable $e) {
-  if (isset($pdo) && $pdo instanceof PDO && $pdo->inTransaction()) {
+    if (isset($pdo) && $pdo instanceof PDO && $pdo->inTransaction()) {
       $pdo->rollBack();
-  }
+    }
 
-  http_response_code(500);
-  echo json_encode([
+    http_response_code(500);
+    echo json_encode([
       'ok' => false,
-      'error' => $e->getMessage()
-  ]);
-}
+      'error' => 'Error interno'
+    ]);
+  }

@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btnCrear.textContent = "Creando...";
 
         try {
-            const res = await fetch("empleados_api.php", {
+            const res = await fetch("api/empleados_api.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (btn.dataset.action === "delete") {
             if (!confirm("¿Eliminar empleado?")) return;
 
-            const res = await fetch("empleados_api.php", {
+            const res = await fetch("api/empleados_api.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ action: "delete", id })
@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!ok) return;
 
-        const res = await fetch("empleados_api.php", {
+        const res = await fetch("api/empleados_api.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
