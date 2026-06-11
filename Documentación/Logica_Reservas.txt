@@ -1,0 +1,66 @@
+
+Lógica de reservas – Sistema de reservas (BAR LOLI)
+-------------------------------------------------------------------------------
+
+El restaurante dispone de 10 mesas con una capacidad de 5 personas por mesa, lo que establece un máximo de 50 comensales por franja horaria.
+
+Cada cliente autenticado puede realizar una reserva indicando:
+
+- Número de comensales (mínimo 1, máximo 50).
+
+- Fecha y hora dentro de los turnos permitidos.
+
+
+El sistema valida que los datos introducidos cumplan las restricciones de capacidad y horario antes de aceptar la reserva.
+
+Los clientes autenticados disponen además de una zona personal desde la que podrán:
+
+- Realizar reservas.
+
+- Gestionar futuras reservas
+
+- Publicar reseñas del restaurante (si una reseña es bloqueada por mal uso se le notifica)
+
+
+
+Capacidad del restaurante: hay 10 mesas numeradas del 1 al 10.
+
+Regla de ocupación: cada mesa representa hasta 5 comensales.
+
+La app calcula automáticamente las mesas necesarias: mesas = ceil(comensales / 5).
+
+Ejemplo: 7 comensales → 2 mesas (capacidad “reservada” 10 pax).
+
+Turnos de reserva
+
+Comida: 14:00–16:00
+
+Cena: 21:00–23:00
+
+
+Reglas para reservas ONLINE (clientes desde la web)
+
+Estas reglas solo se aplican si la reserva es para HOY:
+
+Si el cliente reserva COMIDA para HOY → solo se permite antes de las 15:00.
+A partir de las 15:00: “no se permite reservar para comer para hoy”.
+
+Si el cliente reserva CENA para HOY → solo se permite antes de las 22:00.
+A partir de las 22:00: “no se permite reservar para cenar para hoy”.
+
+Para días posteriores (mañana, pasado, etc.) → se puede reservar siempre, sin importar la hora (por ejemplo, a la 1:00 AM también).
+
+
+
+Reservas MANUALES (trabajadores desde el panel)
+
+Los trabajadores sí pueden crear reservas manuales en cualquier momento, incluso después de las horas límite, porque cubre casos reales como:
+
+Clientes que llegan en persona y hay mesa disponible.
+
+Reservas por teléfono de última hora (ej. “llegamos en 10 minutos, apúntanos una mesa”).
+
+Ajustes internos del negocio (organización del salón, imprevistos, etc.).
+
+
+En resumen: la web es más estricta para HOY, pero el personal tiene control total para gestionar el servicio real del restaurante.

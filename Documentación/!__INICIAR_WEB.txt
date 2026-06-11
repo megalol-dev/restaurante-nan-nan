@@ -1,0 +1,8 @@
+//PARA INCIAR LA WEB USAMOS PHP COMO SERVER, SIGUE LOS SIGUIENTE PASOS
+
+-> 1 ABRE LA CONSOLA EN EL INDEX DEL PROYECTO -> (control + ñ)
+-> 2 ESCRIBE -> php -S localhost:8000
+-> 3 ENTRA AL NAVEGADOR Y ESCRIBE -> http://localhost:8000/index.htm
+
+
+-> URL YOUTUBE https://youtu.be/NiNfj3A-1FY

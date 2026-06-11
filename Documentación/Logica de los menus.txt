@@ -1,0 +1,12 @@
+
+// Desde el panel de control del admin se peuden crear menus para todo los dias del año 
+-> Podemos crear platos independientes y estos son añadidos a la carta. Tenemos la sección de crear menú del día, el cual no da la opción de configurar hasta 10 primeros, 10 segundos y 10 postres. Además se nos indica el menú del día, mes y año.
+
+
+
+// En la sección de mostrar menus diarios se cargara el menu del dia automaticamente.
+-> En la web principal podemos ver el menu del día.
+
+
+
+// En caso de que llegue un día en el que no hemos creado ningún menú, se nos mostrará el menú vacío.

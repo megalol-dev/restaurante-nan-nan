@@ -1,0 +1,24 @@
+// Información del sistema "Bar Loli"
+
+"Según el rol entre JEFE - Encargado - Trabajador el empleado tiene acceso a varias cosas en el panel de trabajadores, la idea es que todos desde un ordenador puedan gestionar las reversas del bar y ademas el jefe pueda añadir trabajadores, modificar sus categorías y gestionar las reseñas. 
+Ademas este sistema CRUD permite editar
+-> trabajadores
+-> reservas del bar
+-> menu del dia
+-> menu de la carta general
+-> reseñas de los clientes  
+ "
+
+--------------------------Contraseñas de los trabajadores----------------------------
+
+// ROOT -> JEFE (solo hay 1, es Loli la dueña del bar, tiene acceso a todo)
+Correo -> Lolibar@gmail.es
+Pass   -> 12345678
+
+// Encargado (tiene acceso a varias cosas)
+Pedro@gmail.es
+123123123
+
+// Trabajador (tiene acceso a varias cosas)
+Emilio@gmail.com
+87654321

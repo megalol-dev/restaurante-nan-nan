@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BAR LOLI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container">
+            <h1 class="brand">BAR LOLI</h1>
+        </div>
+    </header>
+
+    <!-- NAV -->
+    <nav class="site-nav">
+        <div class="container nav-inner">
+            <a class="nav-link" href="login.php">Iniciar sesión (reservas)</a>
+            <a class="nav-link" href="registro.html">Registrarse</a>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="container">
+        <!-- HERO / INFO -->
+        <section class="card hero">
+            <!-- ✅ Estos dos textos se rellenan desde BD (si existe), si no -> fallback -->
+            <h2 id="heroTitulo">¡Tu bar de confianza!</h2>
+            <p id="heroSubtitulo">
+                Tú vas confianza... lo que tú veas... Para reservar mesa, regístrate e inicia sesión.
+            </p>
+        </section>
+
+        <!-- MENÚ DEL DÍA -->
+        <section class="menu-dia">
+            <div class="menu-dia__head">
+                <h2 class="menu-dia__title">MENÚ DEL DÍA</h2>
+
+                <div class="menu-dia__date">
+                    <div class="menu-dia__date-badge" id="menuFecha">07/01/2026</div>
+                </div>
+            </div>
+
+            <div class="menu-dia__wrap">
+                <div class="menu-dia__box">
+                    <h3>Primeros</h3>
+                    <ul class="list" id="menuPrimeros"></ul>
+                </div>
+
+                <div class="menu-dia__box">
+                    <h3>Segundos</h3>
+                    <ul class="list" id="menuSegundos"></ul>
+                </div>
+
+                <div class="menu-dia__box">
+                    <h3>Postres</h3>
+                    <ul class="list" id="menuPostres"></ul>
+                </div>
+
+                <div class="menu-dia__box menu-dia__note">
+                    <p class="price-note" style="margin:0;">
+                        <strong>15€</strong> de lunes a viernes · <strong>18€</strong> sábados, domingos o festivos.
+                    </p>
+                    <p id="menuIncluye" class="hint" style="margin:6px 0 0;">Incluye: Agua, vino, casera y pan.</p>
+                </div>
+
+                <div class="menu-dia__actions">
+                    <a class="btn" href="carta.php">Ver carta del restaurante</a>
+                </div>
+            </div>
+        </section>
+
+        <p> </p>
+        <p> </p>
+        <p> </p>
+
+        <!-- RESEÑAS -->
+        <section class="reviews-home">
+            <h2 class="reviews-home__title">Reseñas de nuestros clientes</h2>
+
+            <div class="reviews-home__panel">
+                <div id="homeResenas" class="reviews-list">Cargando reseñas...</div>
+
+                <div class="reviews-home__actions">
+                    <a class="btn btn--outline" href="resenas.php">Ver más reseñas</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>
+                <strong>BAR LOLI</strong><br />
+                Calle Ejemplo 123, Madrid
+            </div>
+            <div>
+                Tel: 600 000 000<br />
+                Horario: 09:00 - 23:00
+            </div>
+            <div>
+                © <span id="year">2026</span> BAR LOLI
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script>
+        // Fecha dinámica para "MENÚ DEL DÍA" (dd/mm/aaaa)
+        const now = new Date();
+        const d = String(now.getDate()).padStart(2, "0");
+        const m = String(now.getMonth() + 1).padStart(2, "0");
+        const y = now.getFullYear();
+
+        document.getElementById("menuFecha").textContent = `${d}/${m}/${y}`;
+        document.getElementById("year").textContent = y;
+
+        // ✅ Frase dinámica desde la BD (frase_web_api.php)
+        (async () => {
+            const h2 = document.getElementById("heroTitulo");
+            const p = document.getElementById("heroSubtitulo");
+
+            // Fallbacks (por si falla la API o no hay frase guardada)
+            const fallbackTitulo = "¡Tu bar de confianza!";
+            const fallbackSubtitulo =
+                "Tú vas confianza... lo que tú veas... Para reservar mesa, regístrate e inicia sesión.";
+
+            try {
+                const res = await fetch("frase_web_api.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ action: "get" }),
+                });
+
+                const data = await res.json();
+
+                if (!res.ok || !data.ok) throw new Error(data.error || "Error");
+
+                if (data.frase && (data.frase.titulo || data.frase.subtitulo)) {
+                    h2.textContent = String(data.frase.titulo || fallbackTitulo);
+                    p.textContent = String(data.frase.subtitulo || fallbackSubtitulo);
+                } else {
+                    // No hay frase guardada
+                    h2.textContent = fallbackTitulo;
+                    p.textContent = fallbackSubtitulo;
+                }
+            } catch (e) {
+                // Si falla algo, dejamos el fallback sin romper la página
+                h2.textContent = fallbackTitulo;
+                p.textContent = fallbackSubtitulo;
+            }
+        })();
+    </script>
+
+    <script src="assets/js/index_resenas.js?v=4"></script>
+    <script src="assets/js/index_menu.js?v=1"></script>
+</body>
+
+</html>
