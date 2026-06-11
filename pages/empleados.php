@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 session_start();
-require __DIR__ . '/database/db.php';
+require __DIR__ . '/../database/db.php';
 
 /* Solo trabajadores con rol jefe/encargado */
 if (empty($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] !== 'trabajador') {
@@ -26,7 +26,7 @@ $empleados = $st->fetchAll();
   <meta charset="utf-8">
   <title>Empleados - BAR LOLI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/BarApp/assets/css/styles.css">
 </head>
 <body>
 
@@ -222,7 +222,7 @@ $empleados = $st->fetchAll();
   </div>
 </footer>
 
-<script src="assets/js/empleados.js?v=2"></script>
+<script src="/BarApp/assets/js/empleados.js?v=2"></script>
 </body>
 </html>
 

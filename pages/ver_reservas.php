@@ -2,7 +2,7 @@
 declare(strict_types=1);
 session_start();
 
-require __DIR__ . '/database/db.php';
+require __DIR__ . '/../database/db.php';
 
 if (empty($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] !== 'trabajador') {
     header("Location: login.php");
@@ -25,7 +25,7 @@ if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha)) {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Reservas - BAR LOLI</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/BarApp/assets/css/styles.css">
 </head>
 <body>
 
@@ -144,7 +144,7 @@ if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha)) {
   window.__FECHA_RESERVAS__ = "<?php echo $fecha; ?>";
   window.__ROL_TRABAJADOR__ = "<?php echo htmlspecialchars($rol, ENT_QUOTES); ?>";
 </script>
-<script src="assets/js/ver_reservas.js?v=2"></script>
+<script src="/BarApp/assets/js/ver_reservas.js?v=2"></script>
 </body>
 </html>
 

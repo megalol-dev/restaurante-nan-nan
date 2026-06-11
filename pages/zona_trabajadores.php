@@ -26,7 +26,7 @@ Roles:
   <meta charset="utf-8">
   <title>Zona Trabajadores - BAR LOLI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/BarApp/assets/css/styles.css">
 </head>
 <body>
 
@@ -64,7 +64,7 @@ Roles:
       
       <a class="panel-btn" href="ver_reservas.php">📅 Ver reservas</a>
       
-      <?php if ($rol === 'jefe' || $rol === 'encargado'): ?>
+      <?php if ($rol === 'jefe'): ?>
         <a href="platos.php" class="panel-btn">🍽️ Crear / Editar platos (carta)</a>
       <?php endif; ?>
 

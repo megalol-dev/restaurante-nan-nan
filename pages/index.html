@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 
 <body>
@@ -135,7 +135,7 @@
                 "Tú vas confianza... lo que tú veas... Para reservar mesa, regístrate e inicia sesión.";
 
             try {
-                const res = await fetch("api/frase_web_api.php", {
+                const res = await fetch("../api/frase_web_api.php", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ action: "get" }),
@@ -161,8 +161,8 @@
         })();
     </script>
 
-    <script src="assets/js/index_resenas.js?v=4"></script>
-    <script src="assets/js/index_menu.js?v=1"></script>
+    <script src="../assets/js/index_resenas.js?v=4"></script>
+    <script src="../assets/js/index_menu.js?v=1"></script>
 </body>
 
 </html>

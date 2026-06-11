@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             /* lógica del formulario: enviar por fetch a registro.php */
-            const res = await fetch("api/registro.php", {
+            const res = await fetch("/BarApp/api/registro_api.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)

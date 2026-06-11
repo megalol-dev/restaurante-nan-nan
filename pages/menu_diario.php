@@ -23,7 +23,7 @@ $fechaHoy = date('Y-m-d');
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Crear menú diario - BAR LOLI</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/BarApp/assets/css/styles.css">
 </head>
 <body>
 
@@ -95,6 +95,6 @@ $fechaHoy = date('Y-m-d');
   </div>
 </footer>
 
-<script src="assets/js/menu_diario.js?v=1"></script>
+<script src="/BarApp/assets/js/menu_diario.js?v=1"></script>
 </body>
 </html>

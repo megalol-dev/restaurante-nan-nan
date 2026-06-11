@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . '/database/db.php';
+require __DIR__ . '/../database/db.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -58,18 +58,6 @@ if (strlen($password) < 6) {
 try {
     $pdo = db();
 
-    // Asegura tabla (por si te olvidas de ejecutar schema.sql)
-    $pdo->exec("
-      CREATE TABLE IF NOT EXISTS clientes (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nombre TEXT NOT NULL,
-        apellidos TEXT NOT NULL,
-        email TEXT NOT NULL UNIQUE,
-        telefono TEXT NOT NULL,
-        password_hash TEXT NOT NULL,
-        created_at TEXT NOT NULL DEFAULT (datetime('now'))
-      );
-    ");
 
     // Comprobar email repetido
     $st = $pdo->prepare("SELECT id FROM clientes WHERE email = :email LIMIT 1");

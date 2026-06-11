@@ -8,7 +8,7 @@ session_start();
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Iniciar sesión - BAR LOLI</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
   <header class="site-header">
@@ -77,6 +77,6 @@ session_start();
   </footer>
 
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-  <script src="assets/js/login.js?v=2"></script>
+  <script src="../assets/js/login.js?v=2"></script>
 </body>
 </html>

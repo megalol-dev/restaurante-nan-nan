@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function api(payload) {
-        const res = await fetch("api/platos_api.php", {
+        const res = await fetch("/BarApp/api/platos_api.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),

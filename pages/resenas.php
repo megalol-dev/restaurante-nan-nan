@@ -8,7 +8,7 @@ session_start();
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Reseñas - BAR LOLI</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/BarApp/assets/css/styles.css">
 </head>
 <body>
 <header class="site-header">
@@ -52,6 +52,6 @@ session_start();
     <div>© <?php echo date('Y'); ?> BAR LOLI</div>
   </div>
 </footer>
-<script src="assets/js/resenas_public.js?v=2"></script>
+<script src="/BarApp/assets/js/resenas_public.js?v=2"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 session_start();
 
-require __DIR__ . '/database/db.php';
+require __DIR__ . '/../database/db.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -290,7 +290,7 @@ try {
         SET nombre_publico = :n,
             puntuacion = :p,
             texto = :t,
-            updated_at = datetime('now')
+            updated_at = NOW()
         WHERE cliente_id = :cid
       ");
       $upd->execute([
@@ -302,8 +302,8 @@ try {
     } else {
       $ins = $pdo->prepare("
         INSERT INTO resenas (cliente_id, nombre_publico, puntuacion, texto, fecha, created_at, updated_at, estado)
-        VALUES (:cid, :n, :p, :t, date('now'), datetime('now'), datetime('now'), 'visible')
-      ");
+        VALUES (:cid, :n, :p, :t, CURDATE(), NOW(), NOW(), 'visible')
+        ");
       $ins->execute([
         ':cid' => $clienteId,
         ':n' => ($nombrePublico === '' ? null : $nombrePublico),

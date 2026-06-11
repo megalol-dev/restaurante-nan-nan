@@ -22,7 +22,7 @@ $nombre = $_SESSION['nombre'] ?? 'Jefe';
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Moderación de reseñas - BAR LOLI</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/BarApp/assets/css/styles.css">
 </head>
 <body>
 <header class="site-header">
@@ -70,6 +70,6 @@ $nombre = $_SESSION['nombre'] ?? 'Jefe';
   </div>
 </footer>
 
-<script src="assets/js/resenas_admin.js?v=1"></script>
+<script src="/BarApp/assets/js/resenas_admin.js?v=1"></script>
 </body>
 </html>

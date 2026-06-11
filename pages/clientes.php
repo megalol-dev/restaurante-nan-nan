@@ -16,7 +16,7 @@ $rol = $_SESSION['rol'] ?? 'trabajador';
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Clientes registrados - BAR LOLI</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/BarApp/assets/css/styles.css">
 </head>
 <body>
 
@@ -85,7 +85,7 @@ $rol = $_SESSION['rol'] ?? 'trabajador';
   </div>
 </footer>
 
-<script src="assets/js/clientes.js?v=2"></script>
+<script src="/BarApp/assets/js/clientes.js?v=2"></script>
 </body>
 </html>
 

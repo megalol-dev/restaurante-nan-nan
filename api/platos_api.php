@@ -2,7 +2,7 @@
 declare(strict_types=1);
 session_start();
 
-require __DIR__ . '/database/db.php';
+require __DIR__ . '/../database/db.php';
 
 header('Content-Type: application/json; charset=utf-8');
 

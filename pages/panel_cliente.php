@@ -22,7 +22,7 @@ $_SESSION['cliente_nombre'] = $_SESSION['cliente_nombre'] ?? $clienteEmail;
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Zona Cliente - BAR LOLI</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
   <header class="site-header">
@@ -174,7 +174,7 @@ $_SESSION['cliente_nombre'] = $_SESSION['cliente_nombre'] ?? $clienteEmail;
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 
   <!-- ✅ Solo este JS para reservas (evita conflictos) -->
-  <script src="assets/js/zona_cliente.js?v=4"></script>
-  <script src="assets/js/resena_cliente.js?v=1"></script>
+  <script src="../assets/js/zona_cliente.js?v=4"></script>
+  <script src="../assets/js/resena_cliente.js?v=1"></script>
 </body>
 </html>

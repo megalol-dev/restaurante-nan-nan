@@ -23,7 +23,7 @@ $nombreTrabajador = $_SESSION['nombre'] ?? 'Jefe';
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Gestión de platos - BAR LOLI</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="/BarApp/assets/css/styles.css">
 </head>
 <body>
 <header class="site-header">
@@ -119,6 +119,6 @@ $nombreTrabajador = $_SESSION['nombre'] ?? 'Jefe';
   </div>
 </footer>
 
-<script src="assets/js/platos.js?v=1"></script>
+<script src="/BarApp/assets/js/platos.js?v=1"></script>
 </body>
 </html>
