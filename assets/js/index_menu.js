@@ -35,9 +35,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         reset();
 
         if (!data.menu) {
-            ulP.appendChild(li("Hoy no hay menú publicado."));
-            ulS.appendChild(li("—"));
-            ulPo.appendChild(li("—"));
+            ulP.appendChild(
+                li("El menú del día para hoy aún no ha sido publicado. Puedes consultar nuestra carta completa pulsando el botón inferior.")
+            );
+            ulPo.appendChild(li(""));
             if (txtIncluye) txtIncluye.textContent = "";
             return;
         }

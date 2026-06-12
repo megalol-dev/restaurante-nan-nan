@@ -1,6 +1,6 @@
 // Aqui tienes una lista de algunos clientes ya registrados con sus datos sensibles como email + contraseña para que puedas entrar como ellos y hacer pruebas
 
-// testeado -> se han introducido reseñas con todos los usuarios, obteniendo el resultado esperado: en el index.html solo le muestran las 5 últimas reseñas, si accedemos a "Ver mas reseñas" podemos ver todas las reseñas existentes, además de ordenarlas por puntuación.
+// testeado -> se han introducido reseñas con todos los usuarios, obteniendo el resultado esperado: en el index.php solo le muestran las 5 últimas reseñas, si accedemos a "Ver mas reseñas" podemos ver todas las reseñas existentes, además de ordenarlas por puntuación.
 
 
 -> Correo: Paco@gmail.com

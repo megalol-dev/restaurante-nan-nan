@@ -2,28 +2,16 @@
 declare(strict_types=1);
 session_start();
 ?>
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Iniciar sesión - BAR LOLI</title>
-  <link rel="stylesheet" href="../assets/css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="brand">BAR LOLI</h1>
-    </div>
-  </header>
 
-  <nav class="site-nav">
+<?php require_once "../components/header.php"; ?>
+
+<nav class="site-nav">
     <div class="container nav-inner">
-      <a class="nav-link" href="index.html">Inicio</a>
-      <a class="nav-link nav-link--primary" href="login.php">Iniciar sesión</a>
-      <a class="nav-link" href="registro.html">Registrarse</a>
+        <a class="nav-link" href="index.php">Inicio</a>
+        <a class="nav-link nav-link--primary" href="login.php">Iniciar sesión</a>
+        <a class="nav-link" href="registro.php">Registrarse</a>
     </div>
-  </nav>
+</nav>
 
   <main class="container">
     <section class="card card-auth">
@@ -68,15 +56,6 @@ session_start();
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div><strong>BAR LOLI</strong><br />Calle Ejemplo 123, Madrid</div>
-      <div>Tel: 600 000 000<br />Horario: 09:00 - 23:00</div>
-      <div>© <span id="year"></span> BAR LOLI</div>
-    </div>
-  </footer>
+<script src="../assets/js/login.js?v=2"></script>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-  <script src="../assets/js/login.js?v=2"></script>
-</body>
-</html>
+<?php require_once "../components/footer.php"; ?>

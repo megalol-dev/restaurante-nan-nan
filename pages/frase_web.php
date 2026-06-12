@@ -9,28 +9,15 @@ if (empty($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] !== 'trabajado
 
 $nombre = $_SESSION['nombre'] ?? 'Jefe';
 ?>
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Frase web - BAR LOLI</title>
-  <link rel="stylesheet" href="/BarApp/assets/css/styles.css">
-</head>
-<body>
 
-<header class="site-header">
-  <div class="container">
-    <h1 class="brand">BAR LOLI</h1>
-  </div>
-</header>
+<?php require_once "../components/header.php"; ?>
 
 <nav class="site-nav">
-  <div class="container nav-inner">
-    <a class="nav-link" href="zona_trabajadores.php">⬅ Volver</a>
-    <a class="nav-link nav-link--primary" href="frase_web.php">Frase web</a>
-    <a class="nav-link" href="logout.php">Cerrar sesión</a>
-  </div>
+    <div class="container nav-inner">
+        <a class="nav-link" href="zona_trabajadores.php">⬅ Volver</a>
+        <a class="nav-link nav-link--primary" href="frase_web.php">Frase web</a>
+        <a class="nav-link" href="logout.php">Cerrar sesión</a>
+    </div>
 </nav>
 
 <main class="container">
@@ -68,5 +55,5 @@ $nombre = $_SESSION['nombre'] ?? 'Jefe';
 </main>
 
 <script src="/BarApp/assets/js/frase_web.js?v=1"></script>
-</body>
-</html>
+
+<?php require_once "../components/footer.php"; ?>

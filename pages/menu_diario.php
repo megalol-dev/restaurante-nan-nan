@@ -17,21 +17,9 @@ if (!in_array($rol, ['jefe', 'encargado'], true)) {
 $nombreTrabajador = $_SESSION['nombre'] ?? 'Trabajador';
 $fechaHoy = date('Y-m-d');
 ?>
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Crear menú diario - BAR LOLI</title>
-  <link rel="stylesheet" href="/BarApp/assets/css/styles.css">
-</head>
-<body>
 
-<header class="site-header">
-  <div class="container">
-    <h1 class="brand">BAR LOLI</h1>
-  </div>
-</header>
+<?php require_once "../components/header.php"; ?>
+
 
 <nav class="site-nav">
   <div class="container nav-inner">
@@ -87,14 +75,6 @@ $fechaHoy = date('Y-m-d');
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div><strong>BAR LOLI</strong><br />Calle Ejemplo 123, Madrid</div>
-    <div>Tel: 600 000 000<br />Horario: 09:00 - 23:00</div>
-    <div>© <?php echo date('Y'); ?> BAR LOLI</div>
-  </div>
-</footer>
-
 <script src="/BarApp/assets/js/menu_diario.js?v=1"></script>
-</body>
-</html>
+
+<?php require_once "../components/footer.php"; ?>

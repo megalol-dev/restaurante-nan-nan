@@ -16,24 +16,11 @@ $clienteEmail = $_SESSION['cliente_email'] ?? 'cliente';
 // Nombre “humano” del cliente para reservas
 $_SESSION['cliente_nombre'] = $_SESSION['cliente_nombre'] ?? $clienteEmail;
 ?>
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Zona Cliente - BAR LOLI</title>
-  <link rel="stylesheet" href="../assets/css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="brand">BAR LOLI</h1>
-    </div>
-  </header>
+
+<?php require_once "../components/header.php"; ?>
 
   <nav class="site-nav">
     <div class="container nav-inner">
-      <a class="nav-link" href="index.html">Inicio</a>
       <a class="nav-link nav-link--primary" href="panel_cliente.php">Zona cliente</a>
       <a class="nav-link" href="logout.php">Cerrar sesión</a>
     </div>
@@ -163,18 +150,8 @@ $_SESSION['cliente_nombre'] = $_SESSION['cliente_nombre'] ?? $clienteEmail;
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div><strong>BAR LOLI</strong><br />Calle Ejemplo 123, Madrid</div>
-      <div>Tel: 600 000 000<br />Horario: 09:00 - 23:00</div>
-      <div>© <span id="year"></span> BAR LOLI</div>
-    </div>
-  </footer>
-
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-
   <!-- ✅ Solo este JS para reservas (evita conflictos) -->
   <script src="../assets/js/zona_cliente.js?v=4"></script>
+  
   <script src="../assets/js/resena_cliente.js?v=1"></script>
-</body>
-</html>
+<?php require_once "../components/footer.php"; ?>

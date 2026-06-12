@@ -66,7 +66,7 @@ try {
   ensureColumn($pdo, 'resenas', "motivo_moderacion TEXT");                           // opcional
 
   // =========================================================
-  // ✅ PÚBLICO: últimas reseñas (para index.html)
+  // ✅ PÚBLICO: últimas reseñas (para index.php)
   // action: latest, limit
   // SOLO visible
   // =========================================================

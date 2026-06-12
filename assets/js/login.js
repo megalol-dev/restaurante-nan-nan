@@ -52,11 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
     password.addEventListener("input", validarPassword);
 
     $("btnVolver").addEventListener("click", () => {
-        window.location.href = "index.html";
+        window.location.href = "index.php";
     });
 
     $("btnRegistro").addEventListener("click", () => {
-        window.location.href = "registro.html";
+        window.location.href = "registro.php";
     });
 
     form.addEventListener("submit", async (e) => {

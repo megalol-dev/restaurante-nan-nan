@@ -19,21 +19,8 @@ if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha)) {
 }
 
 ?>
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Reservas - BAR LOLI</title>
-  <link rel="stylesheet" href="/BarApp/assets/css/styles.css">
-</head>
-<body>
 
-<header class="site-header">
-  <div class="container">
-    <h1 class="brand">BAR LOLI</h1>
-  </div>
-</header>
+<?php require_once "../components/header.php"; ?>
 
 <nav class="site-nav">
   <div class="container nav-inner">
@@ -132,20 +119,12 @@ if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha)) {
 
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div><strong>BAR LOLI</strong><br />Calle Ejemplo 123, Madrid</div>
-    <div>Tel: 600 000 000<br />Horario: 09:00 - 23:00</div>
-    <div>© <?php echo date('Y'); ?> BAR LOLI</div>
-  </div>
-</footer>
-
 <script>
   window.__FECHA_RESERVAS__ = "<?php echo $fecha; ?>";
   window.__ROL_TRABAJADOR__ = "<?php echo htmlspecialchars($rol, ENT_QUOTES); ?>";
 </script>
 <script src="/BarApp/assets/js/ver_reservas.js?v=2"></script>
-</body>
-</html>
+<?php require_once "../components/footer.php"; ?>
+
 
 

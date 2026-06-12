@@ -24,14 +24,71 @@ document.addEventListener("DOMContentLoaded", () => {
         "Ensaladas", "Carnes", "Pescados", "Pasta", "Bocadillos", "Sandwiches", "Postres", "Bebidas"
     ];
 
-    function showMsg(text, ok = true) {
-        msg.textContent = text;
-        msg.style.display = "block";
-        msg.style.color = ok ? "var(--color-blue)" : "var(--color-red)";
+
+    function mostrarAviso(texto, esError = false) {
+        const aviso = document.createElement("div");
+
+        aviso.textContent = texto;
+
+        aviso.style.position = "fixed";
+        aviso.style.top = "50%";
+        aviso.style.left = "50%";
+        aviso.style.transform = "translate(-50%, -50%)";
+        aviso.style.padding = "18px 28px";
+        aviso.style.borderRadius = "12px";
+        aviso.style.fontWeight = "700";
+        aviso.style.fontSize = "1.1rem";
+        aviso.style.zIndex = "9999";
+        aviso.style.boxShadow = "0 8px 20px rgba(0,0,0,.25)";
+        aviso.style.backgroundColor = esError ? "#c1121f" : "#2e7d32";
+        aviso.style.color = "#fff";
+        aviso.style.minWidth = "320px";
+        aviso.style.textAlign = "center";
+
+        document.body.appendChild(aviso);
+
+        setTimeout(() => {
+            aviso.remove();
+        }, 2000);
     }
 
-    function clearMsg() {
-        msg.style.display = "none";
+    function confirmar(titulo, texto) {
+        return new Promise((resolve) => {
+
+            const fondo = document.createElement("div");
+            fondo.className = "modal-confirm-bg";
+
+            fondo.innerHTML = `
+            <div class="modal-confirm">
+                <h3>${titulo}</h3>
+                <p>${texto}</p>
+
+                <div class="btn-row">
+                    <button class="btn" id="btnConfirmarSi">
+                        Aceptar
+                    </button>
+
+                    <button class="btn btn--outline" id="btnConfirmarNo">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        `;
+
+            document.body.appendChild(fondo);
+
+            document.getElementById("btnConfirmarSi")
+                .addEventListener("click", () => {
+                    fondo.remove();
+                    resolve(true);
+                });
+
+            document.getElementById("btnConfirmarNo")
+                .addEventListener("click", () => {
+                    fondo.remove();
+                    resolve(false);
+                });
+        });
     }
 
     async function api(payload) {
@@ -150,7 +207,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let cacheItems = [];
 
     async function cargar() {
-        clearMsg();
         const data = await api({ action: "list" });
         cacheItems = data.items || [];
         render(cacheItems);
@@ -158,9 +214,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        clearMsg();
 
-        if (!validar()) return;
+        if (!validar()) {
+            mostrarAviso(
+                "❌ No se puede guardar el plato. Revisa los datos.",
+                true
+            );
+            return;
+        }
 
         btnGuardar.disabled = true;
 
@@ -175,17 +236,24 @@ document.addEventListener("DOMContentLoaded", () => {
             let data;
             if (platoId.value) {
                 data = await api({ action: "update", id: Number(platoId.value), ...payload });
-                showMsg("✅ Plato actualizado.", true);
+                mostrarAviso(
+                    "✅ Plato actualizado correctamente"
+                );
             } else {
                 data = await api({ action: "create", ...payload });
-                showMsg("✅ Plato creado.", true);
+                mostrarAviso(
+                    "✅ Plato creado correctamente"
+                );
             }
 
             cacheItems = data.items || [];
             render(cacheItems);
             resetForm();
         } catch (err) {
-            showMsg("❌ " + (err.message || "No se pudo guardar."), false);
+            mostrarAviso(
+                "❌ " + (err.message || "No se pudo guardar."),
+                true
+            );
         } finally {
             btnGuardar.disabled = false;
         }
@@ -193,8 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnCancelarEdicion.addEventListener("click", () => {
         resetForm();
-        showMsg("Edición cancelada.", true);
-        setTimeout(clearMsg, 700);
+        mostrarAviso("✅ Edición cancelada");
     });
 
     lista.addEventListener("click", async (e) => {
@@ -217,7 +284,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (action === "delete") {
-                const ok = confirm(`¿Eliminar "${item.nombre}"?`);
+                const ok = await confirmar(
+                    "Eliminar plato",
+                    `¿Seguro que quieres eliminar "${item.nombre}"?`
+                );
                 if (!ok) return;
 
                 const data = await api({ action: "delete", id });
@@ -227,11 +297,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 // si estabas editando justo ese, limpia el form
                 if (Number(platoId.value) === id) resetForm();
 
-                showMsg("✅ Plato eliminado.", true);
+                mostrarAviso(
+                    "✅ Plato eliminado correctamente"
+                );
                 return;
             }
         } catch (err) {
-            showMsg("❌ " + (err.message || "Error"), false);
+            mostrarAviso(
+                "❌ " + (err.message || "Error"),
+                true
+            );
         }
     });
 
