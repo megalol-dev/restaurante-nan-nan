@@ -38,8 +38,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             ulP.appendChild(
                 li("El menú del día para hoy aún no ha sido publicado. Puedes consultar nuestra carta completa pulsando el botón inferior.")
             );
-            ulPo.appendChild(li(""));
+
             if (txtIncluye) txtIncluye.textContent = "";
+
             return;
         }
 

@@ -98,5 +98,6 @@ $nombreTrabajador = $_SESSION['nombre'] ?? 'Jefe';
   </section>
 </main>
 
+<script src="/BarApp/assets/js/components/ui.js"></script>
 <script src="/BarApp/assets/js/platos.js?v=1"></script>
 <?php require_once "../components/footer.php"; ?>

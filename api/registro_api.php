@@ -34,6 +34,47 @@ if ($nombre === '' || $apellidos === '') {
     exit;
 }
 
+// Solo letras, espacios, tildes y ñ
+$reNombre = '/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$/u';
+
+if (!preg_match($reNombre, $nombre)) {
+    http_response_code(422);
+    echo json_encode([
+        'ok' => false,
+        'error' => 'Nombre inválido'
+    ]);
+    exit;
+}
+
+if (!preg_match($reNombre, $apellidos)) {
+    http_response_code(422);
+    echo json_encode([
+        'ok' => false,
+        'error' => 'Apellidos inválidos'
+    ]);
+    exit;
+}
+
+
+// Longitud máxima nombre
+if (mb_strlen($nombre) < 2 || mb_strlen($nombre) > 30) {
+    http_response_code(422);
+    echo json_encode([
+        'ok' => false,
+        'error' => 'Nombre no válido'
+    ]);
+    exit;
+}
+// Longitud máxima apellido
+if (mb_strlen($apellidos) < 2 || mb_strlen($apellidos) > 60) {
+    http_response_code(422);
+    echo json_encode([
+        'ok' => false,
+        'error' => 'Apellidos no válidos'
+    ]);
+    exit;
+}
+
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(422);
     echo json_encode(['ok' => false, 'error' => 'Email inválido']);

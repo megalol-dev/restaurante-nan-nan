@@ -75,6 +75,8 @@ $fechaHoy = date('Y-m-d');
   </section>
 </main>
 
+
+<script src="/BarApp/assets/js/components/ui.js"></script>
 <script src="/BarApp/assets/js/menu_diario.js?v=1"></script>
 
 <?php require_once "../components/footer.php"; ?>

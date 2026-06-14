@@ -56,6 +56,7 @@ session_start();
     </section>
   </main>
 
+<script src="/BarApp/assets/js/components/ui.js"></script>
 <script src="../assets/js/login.js?v=2"></script>
 
 <?php require_once "../components/footer.php"; ?>

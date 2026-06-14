@@ -8,7 +8,8 @@ session_start();
 <nav class="site-nav">
   <div class="container nav-inner">
     <a class="nav-link" href="index.php">Inicio</a>
-    <a class="nav-link nav-link--primary" href="resenas.php">Reseñas</a>
+    <a class="nav-link" href="login.php">Iniciar sesión (reservas)</a>
+    <a class="nav-link" href="registro.php">Registrarse</a>
   </div>
 </nav>
 
@@ -33,6 +34,7 @@ session_start();
   </section>
 </main>
 
+<script src="/BarApp/assets/js/components/ui.js"></script>
 <script src="/BarApp/assets/js/resenas_public.js?v=2"></script>
 
 <?php require_once "../components/footer.php"; ?>

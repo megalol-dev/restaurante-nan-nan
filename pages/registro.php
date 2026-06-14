@@ -16,5 +16,6 @@ página de registro
         <div id="app"></div>
     </main>
 
+    <script src="/BarApp/assets/js/components/ui.js"></script>
     <script src="../assets/js/registro.js"></script>
 <?php require_once "../components/footer.php"; ?>

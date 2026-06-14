@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Expresiones regulares de validación
     const reNoVacio = /\S+/;
+    const reNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$/
     const reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     const reTelefono = /^\+?\d[\d\s]{7,14}\d$/; // + opcional, dígitos y espacios
 
@@ -111,10 +112,17 @@ document.addEventListener("DOMContentLoaded", () => {
     /* lógica del formulario: valida que el nombre no esté vacío */
     function validarNombre() {
         const v = nombre.value.trim();
+
         if (!reNoVacio.test(v)) {
             setError(nombre, errNombre, "El nombre no puede estar en blanco.");
             return false;
         }
+
+        if (!reNombre.test(v)) {
+            setError(nombre, errNombre, "Solo se permiten letras y espacios.");
+            return false;
+        }
+
         clearError(nombre, errNombre);
         return true;
     }
@@ -122,10 +130,17 @@ document.addEventListener("DOMContentLoaded", () => {
     /* lógica del formulario: valida que los apellidos no estén vacíos */
     function validarApellidos() {
         const v = apellidos.value.trim();
+
         if (!reNoVacio.test(v)) {
             setError(apellidos, errApellidos, "Los apellidos no pueden estar en blanco.");
             return false;
         }
+
+        if (!reNombre.test(v)) {
+            setError(apellidos, errApellidos, "Solo se permiten letras y espacios.");
+            return false;
+        }
+
         clearError(apellidos, errApellidos);
         return true;
     }
@@ -148,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const soloDigitos = v.replace(/^\+/, "");
 
         if (!/^\d+$/.test(soloDigitos)) {
-            setError(telefono, errTelefono, "Solo números (y + al inicio).");
+            setError(telefono, errTelefono, "El teléfono solo puede contener números.");
             return false;
         }
         if (soloDigitos.length < 9) {
@@ -278,33 +293,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-
-    function mostrarAviso(texto, esError = false) {
-        const aviso = document.createElement("div");
-
-        aviso.textContent = texto;
-
-        aviso.style.position = "fixed";
-        aviso.style.top = "50%";
-        aviso.style.left = "50%";
-        aviso.style.transform = "translate(-50%, -50%)";
-        aviso.style.padding = "18px 28px";
-        aviso.style.borderRadius = "12px";
-        aviso.style.fontWeight = "700";
-        aviso.style.fontSize = "1.1rem";
-        aviso.style.zIndex = "9999";
-        aviso.style.boxShadow = "0 8px 20px rgba(0,0,0,.25)";
-        aviso.style.backgroundColor = esError ? "#c1121f" : "#2e7d32";
-        aviso.style.color = "#fff";
-        aviso.style.minWidth = "320px";
-        aviso.style.textAlign = "center";
-
-        document.body.appendChild(aviso);
-
-        setTimeout(() => {
-            aviso.remove();
-        }, 2000);
-    }
 });
 
 

@@ -16,6 +16,64 @@
         </p>
     </section>
 
+
+    <!--Carusel de imagenes-->
+
+    <h2 class="menu-dia__title">NUESTROS MEJORES PLATOS</h2>
+    <section class="card carrusel-card">
+
+        <div class="carrusel">
+            <img
+                id="carruselImg"
+                src="../assets/img/carrusel/plato1.png"
+                alt="Plato del restaurante">
+        </div>
+
+    </section>
+
+    
+    <!--Tarjetas de ventajas-->
+
+    <section class="ventajas">
+
+    <div class="ventaja-card">
+        <div class="ventaja-icon">🍽️</div>
+
+        <h3>Menú diario</h3>
+
+        <p>
+            Consulta cada día nuestro menú actualizado con
+            primeros, segundos y postres.
+        </p>
+    </div>
+
+    <div class="ventaja-card">
+        <div class="ventaja-icon">📅</div>
+
+        <h3>Reserva online</h3>
+
+        <p>
+            Reserva tu mesa en pocos segundos desde cualquier
+            dispositivo y evita esperas.
+        </p>
+    </div>
+
+    <div class="ventaja-card">
+        <div class="ventaja-icon">⭐</div>
+
+        <h3>Opiniones reales</h3>
+
+        <p>
+            Consulta las reseñas y experiencias de nuestros
+            clientes antes de visitarnos.
+        </p>
+    </div>
+
+    </section>
+
+
+    <!--menu del dia-->
+
     <section class="menu-dia">
         <div class="menu-dia__head">
             <h2 class="menu-dia__title">MENÚ DEL DÍA</h2>
@@ -107,5 +165,7 @@
         }
     })();
 </script>
+
+<script src="../assets/js/carrusel.js"></script>
 
 <?php require_once "../components/footer.php"; ?>

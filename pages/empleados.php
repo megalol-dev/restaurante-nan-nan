@@ -201,6 +201,7 @@ $empleados = $st->fetchAll();
 
 </main>
 
+<script src="/BarApp/assets/js/components/ui.js"></script>
 <script src="/BarApp/assets/js/empleados.js?v=2"></script>
 
 <?php require_once "../components/footer.php"; ?>

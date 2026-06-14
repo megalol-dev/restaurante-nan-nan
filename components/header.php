@@ -18,5 +18,8 @@
     <header class="site-header">
         <div class="container">
             <h1 class="brand">Restaurante Ñan Ñan</h1>
+            <p class="brand-subtitle">
+                Comida casera · Menú diario · Reservas online
+            </p>
         </div>
     </header>

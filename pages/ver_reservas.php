@@ -123,6 +123,8 @@ if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha)) {
   window.__FECHA_RESERVAS__ = "<?php echo $fecha; ?>";
   window.__ROL_TRABAJADOR__ = "<?php echo htmlspecialchars($rol, ENT_QUOTES); ?>";
 </script>
+
+<script src="/BarApp/assets/js/components/ui.js"></script>
 <script src="/BarApp/assets/js/ver_reservas.js?v=2"></script>
 <?php require_once "../components/footer.php"; ?>
 

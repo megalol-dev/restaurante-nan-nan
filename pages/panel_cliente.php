@@ -151,7 +151,8 @@ $_SESSION['cliente_nombre'] = $_SESSION['cliente_nombre'] ?? $clienteEmail;
   </main>
 
   <!-- ✅ Solo este JS para reservas (evita conflictos) -->
+
+  <script src="/BarApp/assets/js/components/ui.js"></script>
   <script src="../assets/js/zona_cliente.js?v=4"></script>
-  
   <script src="../assets/js/resena_cliente.js?v=1"></script>
 <?php require_once "../components/footer.php"; ?>

@@ -32,71 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function mostrarAviso(texto, esError = false) {
-        const aviso = document.createElement("div");
 
-        aviso.textContent = texto;
-
-        aviso.style.position = "fixed";
-        aviso.style.top = "50%";
-        aviso.style.left = "50%";
-        aviso.style.transform = "translate(-50%, -50%)";
-        aviso.style.padding = "18px 28px";
-        aviso.style.borderRadius = "12px";
-        aviso.style.fontWeight = "700";
-        aviso.style.fontSize = "1.1rem";
-        aviso.style.zIndex = "9999";
-        aviso.style.boxShadow = "0 8px 20px rgba(0,0,0,.25)";
-        aviso.style.backgroundColor = esError ? "#c1121f" : "#2e7d32";
-        aviso.style.color = "#fff";
-        aviso.style.minWidth = "320px";
-        aviso.style.textAlign = "center";
-
-        document.body.appendChild(aviso);
-
-        setTimeout(() => {
-            aviso.remove();
-        }, 2000);
-    }
-
-    function confirmar(titulo, texto) {
-        return new Promise((resolve) => {
-
-            const fondo = document.createElement("div");
-            fondo.className = "modal-confirm-bg";
-
-            fondo.innerHTML = `
-            <div class="modal-confirm">
-                <h3>${titulo}</h3>
-                <p>${texto}</p>
-
-                <div class="btn-row">
-                    <button class="btn" id="btnConfirmarSi">
-                        Aceptar
-                    </button>
-
-                    <button class="btn btn--outline" id="btnConfirmarNo">
-                        Cancelar
-                    </button>
-                </div>
-            </div>
-        `;
-
-            document.body.appendChild(fondo);
-
-            document.getElementById("btnConfirmarSi")
-                .addEventListener("click", () => {
-                    fondo.remove();
-                    resolve(true);
-                });
-
-            document.getElementById("btnConfirmarNo")
-                .addEventListener("click", () => {
-                    fondo.remove();
-                    resolve(false);
-                });
-        });
-    }
 
 
     function pedirDatosReserva(turno, fecha) {
