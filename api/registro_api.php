@@ -112,9 +112,24 @@ try {
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
     $ins = $pdo->prepare("
-      INSERT INTO clientes (nombre, apellidos, email, telefono, password_hash)
-      VALUES (:nombre, :apellidos, :email, :telefono, :hash)
-    ");
+        INSERT INTO clientes (
+        nombre,
+        apellidos,
+        email,
+        telefono,
+        password_hash,
+        created_at
+        )
+        VALUES (
+            :nombre,
+            :apellidos,
+            :email,
+            :telefono,
+            :hash,
+            NOW()
+        )"
+    );
+    
     $ins->execute([
         ':nombre' => $nombre,
         ':apellidos' => $apellidos,
