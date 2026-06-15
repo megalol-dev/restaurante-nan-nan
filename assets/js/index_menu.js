@@ -39,8 +39,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 li("El menú del día para hoy aún no ha sido publicado. Puedes consultar nuestra carta completa pulsando el botón inferior.")
             );
 
-            if (txtIncluye) txtIncluye.textContent = "";
-
             return;
         }
 
@@ -58,13 +56,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!postres.length) ulPo.appendChild(li("—"));
         else postres.forEach((p) => ulPo.appendChild(li(p.nombre)));
 
-        if (txtIncluye) txtIncluye.textContent = `Incluye: ${data.menu.incluye}.`;
     } catch {
         reset();
         ulP.appendChild(li("No se pudo cargar el menú del día."));
         ulS.appendChild(li("—"));
         ulPo.appendChild(li("—"));
-        if (txtIncluye) txtIncluye.textContent = "";
     }
 });
 

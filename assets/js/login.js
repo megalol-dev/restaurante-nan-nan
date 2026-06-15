@@ -51,10 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     email.addEventListener("input", validarEmail);
     password.addEventListener("input", validarPassword);
 
-    $("btnVolver").addEventListener("click", () => {
-        window.location.href = "index.php";
-    });
-
     $("btnRegistro").addEventListener("click", () => {
         window.location.href = "registro.php";
     });

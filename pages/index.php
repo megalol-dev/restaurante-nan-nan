@@ -2,7 +2,7 @@
 
 <nav class="site-nav">
     <div class="container nav-inner">
-        <a class="nav-link" href="login.php">Iniciar sesión (reservas)</a>
+        <a class="nav-link" href="login.php">Reservas</a>
         <a class="nav-link" href="registro.php">Registrarse</a>
     </div>
 </nav>
@@ -23,10 +23,14 @@
     <section class="card carrusel-card">
 
         <div class="carrusel">
-            <img
-                id="carruselImg"
-                src="../assets/img/carrusel/plato1.png"
-                alt="Plato del restaurante">
+            <img id="imgA"
+            src="../assets/img/carrusel/plato1.png"
+            alt="Plato destacado">
+
+            <img id="imgB"
+            src="../assets/img/carrusel/plato2.png"
+            alt="Plato destacado"
+            style="opacity:0;">
         </div>
 
     </section>
@@ -100,14 +104,23 @@
             </div>
 
             <div class="menu-dia__box menu-dia__note">
-                <p class="price-note" style="margin:0;">
-                    <strong>15€</strong> de lunes a viernes ·
-                    <strong>18€</strong> sábados, domingos o festivos.
+
+                <p class="price-note">
+                    <span class="precio1">
+                        <strong>15€</strong> de lunes a viernes
+                    </span>
+
+                <span class="separador"> · </span>
+
+                    <span class="precio2">
+                        <strong>18€</strong> sábados, domingos o festivos.
+                    </span>
                 </p>
 
-                <p id="menuIncluye" class="hint" style="margin:6px 0 0;">
+                <p id="menuIncluye" class="hint">
                     Incluye: Agua, vino, casera y pan.
                 </p>
+
             </div>
 
             <div class="menu-dia__actions">

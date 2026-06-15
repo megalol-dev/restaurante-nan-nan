@@ -8,7 +8,7 @@ session_start();
 <nav class="site-nav">
     <div class="container nav-inner">
         <a class="nav-link" href="index.php">Inicio</a>
-        <a class="nav-link nav-link--primary" href="login.php">Iniciar sesión</a>
+        <a class="nav-link nav-link--primary" href="login.php">Reservas</a>
         <a class="nav-link" href="registro.php">Registrarse</a>
     </div>
 </nav>
@@ -49,7 +49,6 @@ session_start();
 
         <div class="btn-row">
           <button class="btn" type="submit" id="btnSubmit">Entrar</button>
-          <button class="btn btn--outline" type="button" id="btnVolver">Volver a inicio</button>
           <button class="btn btn--outline" type="button" id="btnRegistro">Registrarse</button>
         </div>
       </form>

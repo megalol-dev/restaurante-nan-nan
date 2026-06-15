@@ -108,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (resNombre) resNombre.value = miResena.nombre_publico || "";
             if (resPunt) resPunt.value = String(miResena.puntuacion || 5);
             if (resTexto) resTexto.value = miResena.texto || "";
+
         } catch {
             // silencioso
         }
@@ -147,6 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
             showResMsg("❌ Puntuación inválida (1-5).", false);
             return;
         }
+
         if (t.length < 5) {
             showResMsg("❌ Escribe un poco más (mínimo 5 caracteres).", false);
             return;
@@ -167,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
             showResMsg("✅ Reseña guardada.", true);
             await cargarMiResenaUI();
             setTimeout(closeResModal, 450);
+
         } catch (err) {
             showResMsg("❌ " + (err.message || "No se pudo guardar."), false);
         } finally {
@@ -232,6 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
         el.textContent = text;
         input.classList.add("is-invalid");
     }
+
     function clearError(input, el) {
         if (!input || !el) return;
         el.textContent = "";
@@ -260,10 +264,10 @@ document.addEventListener("DOMContentLoaded", () => {
             setError(fecha, errFec, "No se puede reservar para un día que ya pasó.");
             showMsg("❌ No se puede reservar para un día que ya pasó.", false);
             ok = false;
-        } else {
+        }
+        else {
             clearError(fecha, errFec);
         }
-
         return ok;
     }
 
@@ -284,8 +288,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const n = resumen.cena;
 
         const txt = `Disponibilidad para ${fecha.value}:
-            🍽️ Comida: ${c.disponibles} mesas (${c.capacidad_restante} personas)
-            🌙 Cena: ${n.disponibles} mesas (${n.capacidad_restante} personas)`;
+        🍽️ Comida: ${c.disponibles} mesas (${c.capacidad_restante} personas)
+        🌙 Cena: ${n.disponibles} mesas (${n.capacidad_restante} personas)`;
 
         infoStock.textContent = txt;
 
@@ -322,40 +326,56 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!tbodyReservas) return;
 
         if (!Array.isArray(reservas) || reservas.length === 0) {
-            tbodyReservas.innerHTML = `<tr><td colspan="5">No tienes reservas activas.</td></tr>`;
+            tbodyReservas.innerHTML =
+                `<tr><td colspan="5">No tienes reservas activas.</td></tr>`;
             return;
         }
-
+        
         tbodyReservas.innerHTML = reservas
             .map((r) => {
                 const rid = Number(r.id);
+
                 return `
 <tr>
-  <td>${fmtFecha(r.fecha)}</td>
-  <td>${labelTurno(r.turno)}</td>
-  <td>${Number(r.comensales)}</td>
-  <td>${Number(r.mesas_usadas)}</td>
-  <td>
-    <button class="btn btn--outline btn-sm" type="button" data-cancelar-reserva="${rid}">
-      Cancelar
-    </button>
-  </td>
+    <td data-label="Fecha">${fmtFecha(r.fecha)}</td>
+    <td data-label="Turno">${labelTurno(r.turno)}</td>
+    <td data-label="Comensales">${Number(r.comensales)}</td>
+    <td data-label="Mesas">${Number(r.mesas_usadas)}</td>
+    <td data-label="Acciones">
+        <button
+            class="btn btn--outline btn-sm"
+            type="button"
+            data-cancelar-reserva="${rid}">
+            Cancelar
+        </button>
+    </td>
 </tr>`;
             })
             .join("");
     }
 
+
     async function cargarTablaReservas() {
         if (!tbodyReservas) return;
-        tbodyReservas.innerHTML = `<tr><td colspan="5">Cargando...</td></tr>`;
+
+        tbodyReservas.innerHTML =
+            `<tr><td colspan="5">Cargando...</td></tr>`;
 
         try {
             const data = await api({ action: "cliente_listar" });
-            renderTablaReservas(data.reservas || []);
+
+            const reservasFuturas = (data.reservas || []).filter(
+                (r) => String(r.fecha) >= hoy
+            );
+
+            renderTablaReservas(reservasFuturas);
+
         } catch {
-            tbodyReservas.innerHTML = `<tr><td colspan="5">No se pudieron cargar tus reservas.</td></tr>`;
+            tbodyReservas.innerHTML =
+                `<tr><td colspan="5">No se pudieron cargar tus reservas.</td></tr>`;
         }
     }
+
 
     if (tbodyReservas) {
         tbodyReservas.addEventListener("click", async (e) => {
@@ -406,7 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (data.reserva) {
                 showMsg(
-                    `✅ Reserva activa en ${labelTurno(data.reserva.turno)} para ${data.reserva.comensales} comensales (mesas: ${data.reserva.mesas_usadas}).`,
+                    `✅ Reserva activa en ${labelTurno(data.reserva.turno)} para ${data.reserva.comensales} comensales(mesas: ${data.reserva.mesas_usadas}).`,
                     true
                 );
             }
@@ -458,7 +478,8 @@ document.addEventListener("DOMContentLoaded", () => {
             pintarResumen(data.resumen);
 
             showMsg(
-                `✅ Reserva confirmada (${labelTurno(turno.value)}). Mesas asignadas: ${data.mesas_asignadas.join(", ")}.`,
+                `✅ Reserva confirmada(${labelTurno(turno.value)
+                }).Mesas asignadas: ${data.mesas_asignadas.join(", ")}.`,
                 true
             );
 
@@ -483,10 +504,5 @@ document.addEventListener("DOMContentLoaded", () => {
         await cargarMiReserva();
         await cargarTablaReservas();
     })();
+
 });
-
-
-
-
-
-

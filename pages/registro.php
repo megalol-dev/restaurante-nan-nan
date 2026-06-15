@@ -7,7 +7,7 @@ página de registro
     <nav class="site-nav">
         <div class="container nav-inner">
             <a class="nav-link" href="index.php">Inicio</a>
-            <a class="nav-link" href="login.php">Iniciar sesión</a>
+            <a class="nav-link" href="login.php">Reservas</a>
             <a class="nav-link nav-link--primary" href="registro.php">Registrarse</a>
         </div>
     </nav>
