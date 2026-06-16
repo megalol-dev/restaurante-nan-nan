@@ -234,24 +234,72 @@ Ejemplos:
 * Platos
 * Reseñas
 
-[DIAGRAMA ER DE LA BASE DE DATOS]
+## 🗄️ Modelo de datos
 
-### Relaciones
+```text
+CLIENTES
+   │
+   ├── 1:N ── RESERVAS
+   │
+   └── 1:N ── RESEÑAS
 
-[EXPLICAR RELACIONES PRINCIPALES ENTRE TABLAS]
+RESERVAS
+   │
+   └── N:M ── MESAS
+
+MENU_DIARIO
+   │
+   └── 1:N ── MENU_DIARIO_ITEMS
+                 │
+                 └── N:1 ── CARTA_PLATOS
+
+TRABAJADORES
+   │
+   ├── Gestionan reservas
+   ├── Gestionan clientes
+   ├── Gestionan menús diarios
+   ├── Gestionan carta de platos
+   ├── Moderan reseñas
+   └── Configuran el contenido dinámico de la página principal
+```
+
+### 📋 Descripción
+
+La base de datos está organizada en torno a tres áreas principales:
+
+- Gestión de clientes y reservas.
+- Gestión de menús y carta del restaurante.
+- Gestión administrativa realizada por trabajadores autorizados.
+
+Las relaciones permiten gestionar reservas, asignación de mesas, publicación de reseñas y configuración dinámica de contenidos mostrados en la página principal.
 
 ---
 
 ## 🔐 Sistema de autenticación
 
-El sistema implementa autenticación basada en sesiones PHP.
+La aplicación implementa un sistema de autenticación basado en sesiones PHP para garantizar el acceso seguro a las zonas privadas.
 
-Características:
+### Características
 
-* Contraseñas cifradas mediante password_hash().
-* Control de acceso por rol.
-* Protección de páginas privadas.
-* Cierre seguro de sesión.
+* Contraseñas almacenadas de forma segura mediante `password_hash()`.
+* Verificación de credenciales mediante `password_verify()`.
+* Gestión de sesiones mediante `$_SESSION`.
+* Control de acceso basado en roles (cliente y trabajador).
+* Protección de páginas privadas frente a accesos no autorizados.
+* Cierre seguro de sesión mediante destrucción de la sesión activa.
+* Validación de formularios tanto en cliente (JavaScript) como en servidor (PHP).
+* Redirección automática según el perfil autenticado:
+
+  * Cliente → Zona Cliente.
+  * Trabajador → Panel de Administración.
+
+### Seguridad aplicada
+
+* Validación y saneamiento de datos de entrada.
+* Verificación de sesiones en páginas protegidas.
+* Restricción de funcionalidades según el rol del usuario.
+* Protección frente a contraseñas almacenadas en texto plano.
+
 
 [CAPTURA LOGIN]
 
@@ -282,10 +330,10 @@ El administrador puede:
 * Gestionar postres.
 * Definir bebidas incluidas.
 
-Los clientes pueden consultar el menú actualizado desde la página principal.
+Los clientes pueden consultar el menú actualizado desde la página principal o ver toda la carta del restaurante.
 
 [CAPTURA MENÚ DEL DÍA]
-
+[CAPTURA DE LA CARTA]
 ---
 
 ## ⭐ Sistema de reseñas
@@ -299,7 +347,8 @@ Características:
 * Visualización pública.
 * Gestión administrativa.
 
-[CAPTURA RESEÑAS]
+[CAPTURA RESEÑAS web]
+[CAPTURA RESEÑAS menu]
 
 ---
 
@@ -316,12 +365,22 @@ Características:
 
 ### Responsive
 
-La parte pública de la aplicación está adaptada para dispositivos móviles.
+### 📱 Responsive
+
+La parte pública de la aplicación ha sido adaptada para dispositivos móviles, permitiendo consultar información del restaurante, registrarse, iniciar sesión y gestionar reservas desde cualquier dispositivo.
+
+La zona de gestión también incluye adaptación responsive para garantizar su funcionamiento en pantallas pequeñas. No obstante, debido al volumen de información y herramientas administrativas disponibles, se recomienda su uso desde un ordenador para una mejor experiencia de usuario.
+
+#### Funcionalidades adaptadas
 
 * Home responsive.
 * Login responsive.
 * Registro responsive.
 * Panel cliente responsive.
+* Gestión de reservas responsive.
+* Panel de administración responsive.
+* Tablas adaptadas para dispositivos móviles.
+
 
 [CAPTURAS MÓVIL]
 
