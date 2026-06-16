@@ -124,6 +124,7 @@ Ejemplos:
 - Gestión de reseñas.
 - Autenticación.
 
+---
 
 #### assets/
 
