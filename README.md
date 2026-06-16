@@ -67,14 +67,150 @@ Entre los objetivos principales destacan:
 
 ### Organización
 
+## 🏗️ Arquitectura del proyecto
+
 ```text
-api/
-assets/
-components/
-database/
-docs/
-pages/
+BarApp/
+│
+├── api/
+│   ├── login_api.php
+│   ├── reservas_api.php
+│   ├── menu_diario_api.php
+│   ├── clientes_api.php
+│   ├── empleados_api.php
+│   ├── resenas_api.php
+│   └── ...
+│
+├── assets/
+│   ├── css/
+│   ├── js/
+│   └── img/
+│
+├── components/
+│   ├── header.php
+│   └── footer.php
+│
+├── database/
+│   ├── db.php
+│   └── gastroreservas.sql
+│
+├── docs/
+│   ├── capturas/
+│   └── diagramas/
+│
+└── pages/
+    ├── index.php
+    ├── login.php
+    ├── registro.php
+    ├── panel_cliente.php
+    ├── panel_admin.php
+    └── ...
 ```
+
+### 📂 Organización de carpetas
+
+#### api/
+
+Contiene todos los endpoints de la aplicación.
+
+La lógica de negocio se encuentra separada de la interfaz de usuario mediante APIs PHP que reciben peticiones AJAX desde JavaScript.
+
+Ejemplos:
+
+- Gestión de reservas.
+- Gestión de clientes.
+- Gestión de empleados.
+- Gestión de menús diarios.
+- Gestión de reseñas.
+- Autenticación.
+
+---
+
+#### assets/
+
+Recursos estáticos de la aplicación.
+
+##### css/
+
+Hojas de estilo globales y responsive.
+
+##### js/
+
+Lógica cliente desarrollada en JavaScript ES6.
+
+Incluye:
+
+- Gestión de reservas.
+- Login y registro.
+- Carrusel dinámico.
+- Menú diario.
+- Paneles de administración.
+
+##### img/
+
+Imágenes utilizadas por la aplicación.
+
+- Platos.
+- Carrusel.
+- Elementos gráficos.
+- Recursos de interfaz.
+
+---
+
+#### components/
+
+Componentes reutilizables compartidos por toda la aplicación.
+
+Actualmente incluye:
+
+- Header.
+- Footer.
+
+Esta estructura evita duplicar código entre páginas.
+
+---
+
+#### database/
+
+Configuración de acceso a base de datos y scripts relacionados con MariaDB/MySQL.
+
+Incluye:
+
+- Conexión PDO.
+- Configuración centralizada.
+- Scripts de creación de tablas.
+
+---
+
+#### docs/
+
+Documentación técnica del proyecto.
+
+Aquí se almacenan:
+
+- Capturas de pantalla.
+- Diagramas de base de datos.
+- Recursos para el README.
+- Documentación complementaria.
+
+---
+
+#### pages/
+
+Interfaces visibles por los usuarios.
+
+Incluye tanto las páginas públicas como los paneles privados.
+
+Ejemplos:
+
+- Página principal.
+- Login.
+- Registro.
+- Zona cliente.
+- Panel de administración.
+- Gestión de reservas.
+- Gestión de empleados.
+- Gestión de clientes.
 
 ### Componentes principales
 
