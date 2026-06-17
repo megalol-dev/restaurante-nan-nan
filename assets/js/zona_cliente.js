@@ -332,22 +332,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const rid = Number(r.id);
 
         return `
-<tr>
-    <td data-label="Fecha">${fmtFecha(r.fecha)}</td>
-    <td data-label="Turno">${labelTurno(r.turno)}</td>
-    <td data-label="Comensales">${Number(r.comensales)}</td>
-    <td data-label="Mesas">${Number(r.mesas_usadas)}</td>
-    <td data-label="Acciones">
-        <button
-            class="btn btn--outline btn-sm"
-            type="button"
-            data-cancelar-reserva="${rid}">
-            Cancelar
-        </button>
-    </td>
-</tr>`;
+        <tr>
+          <td data-label="Fecha">${fmtFecha(r.fecha)}</td>
+          <td data-label="Turno">${labelTurno(r.turno)}</td>
+          <td data-label="Comensales">${Number(r.comensales)}</td>
+          <td data-label="Mesas">${Number(r.mesas_usadas)}</td>
+          <td data-label="Acciones">
+            <button
+              class="btn btn--outline btn-sm"
+              type="button"
+              data-cancelar-reserva="${rid}">
+              Cancelar
+            </button>
+          </td>
+        </tr>`;
       })
-      .join("");
+    .join("");
   }
 
   async function cargarTablaReservas() {
@@ -490,10 +490,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================================================
   // INIT
   // =========================================================
-  (async () => {
-    await cargarMiResenaUI();
+  setInterval(async () => {
     await cargarResumen();
     await cargarMiReserva();
     await cargarTablaReservas();
-  })();
+  }, 10000);
 });
