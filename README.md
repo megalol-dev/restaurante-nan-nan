@@ -271,6 +271,19 @@ Las relaciones permiten gestionar reservas, asignación de mesas, publicación d
 
 ---
 
+## 🎨 Interfaz de usuario
+* El usuario puede ver las siguiente secciones.
+
+### Página principal
+
+* Reservas y registro.
+* Hero dinámico - carrusel de platos.
+* Menú del día actualizado.
+* Carta del restaurante.
+* Reseñas destacadas y ver todas las reseñas.
+
+![Hero](assets/img/readme/8hero_web.png)
+
 ## 🔐 Sistema de autenticación
 
 La aplicación implementa un sistema de autenticación basado en sesiones PHP para garantizar el acceso seguro a las zonas privadas.
@@ -349,20 +362,67 @@ Características:
 
 ---
 
-## 🎨 Interfaz de usuario
+## 🎨 Interfaz de los gestores 
+* El gestor y trabajadores pueden ver las siguiente secciones.
 
-### Página principal
+## ⚙️ Panel de Administración
 
-* Hero dinámico.
-* Carrusel de platos.
-* Menú del día.
-* Reseñas destacadas.
+La aplicación incorpora una zona privada de gestión destinada a trabajadores autorizados del restaurante.
 
-![Hero](assets/img/readme/8hero_web.png)
+Desde esta área es posible administrar los distintos elementos de la aplicación mediante una interfaz centralizada y protegida por autenticación.
 
-### Responsive
+### Funcionalidades disponibles
 
-### 📱 Responsive
+* Gestión de clientes registrados.
+* Gestión de trabajadores y roles.
+* Gestión de reservas.
+* Gestión de mesas del restaurante.
+* Gestión de la carta de platos.
+* Creación y publicación del menú diario.
+* Moderación de reseñas de clientes.
+* Configuración del contenido dinámico de la página principal.
+
+### Objetivo
+
+Esta zona permite gestionar el funcionamiento diario del restaurante desde una única aplicación, facilitando las tareas administrativas y evitando modificaciones directas en la base de datos.
+
+### Capturas de la zona de gestión
+
+#### Gestión de clientes
+
+![Gestión de clientes](assets/img/readme/10Zona_Gestion.png)
+
+#### Gestión de reservas
+
+![Gestión de reservas](assets/img/readme/11Zona_Crear_Trabajador.png)
+
+#### Gestión de mesas
+
+![Gestión de mesas](assets/img/readme/12Zona_Reservas.png)
+
+#### Gestión de crear platos de la carta
+
+![Gestión de carta](assets/img/readme/13Zona_crear_plato.png)
+
+#### Menú diario
+
+![Menú diario](assets/img/readme/14Zona_crear_menu.png)
+
+#### Ver clientes registrados en al app
+
+![Registro clientes](assets/img/readme/15Zona_ver_clientes.png)
+
+#### Moderación de reseñas
+
+![Configuración reseñas](assets/img/readme/16Zona_resenas.png)
+
+#### Moderación de reseñas
+
+![Configurción frase web](assets/img/readme/17Zona_frase.png)
+
+---
+
+## 📱 Responsive
 
 La parte pública de la aplicación ha sido adaptada para dispositivos móviles, permitiendo consultar información del restaurante, registrarse, iniciar sesión y gestionar reservas desde cualquier dispositivo.
 
@@ -476,22 +536,6 @@ https://github.com/megalol-dev
 
 ---
 
-## 📸 Galería
-
-[CAPTURA HOME]
-
-[CAPTURA CARTA]
-
-[CAPTURA PANEL CLIENTE]
-
-[CAPTURA ADMINISTRACIÓN]
-
-[CAPTURA MENÚ DEL DÍA]
-
-[CAPTURA RESEÑAS]
-
----
-
 ## 📜 Licencia
 
-Proyecto desarrollado con fines educativos y de portfolio.
+Proyecto desarrollado con fines de portfolio. Proyecto privado sin autorización para el comercio
