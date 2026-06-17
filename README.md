@@ -350,19 +350,19 @@ El módulo de zona clientes permite reservar mesa y poner reseñas:
 
 ---
 
-## 🍴 Gestión del menú diario
+## 🍴 Menú diario y carta del restaurante.
 
-El administrador puede:
+El cliente puede ver:
 
-* Crear menús diarios.
-* Gestionar primeros platos.
-* Gestionar segundos platos.
-* Gestionar postres.
-* Definir bebidas incluidas.
+* Menú diario y fecha del día.
+* Carta del restaurante.
 
-Los clientes pueden consultar el menú actualizado desde la página principal o ver toda la carta del restaurante.
+El menú diaria y la carta son editados desde la zona del gestor, el cuál podrá crear platos, añadirlos a la carta y con ellos crear los menús diarios.
 
+#### Ver menú del día
 ![Menu](assets/img/readme/4Menu_dia.png)
+
+#### Ver carta del restaurante
 ![Carta](assets/img/readme/5Carta_restaurante.png)
 
 ---
@@ -378,7 +378,10 @@ Características:
 * Visualización pública.
 * Gestión administrativa.
 
+#### Ver últimas reseñas en la web
 ![Reseñas](assets/img/readme/6Resenas_web.png)
+
+#### Ver todas las reseñas y filtar
 ![Reseña menu](assets/img/readme/7Resena_menu.png)
 
 ---
@@ -392,22 +395,15 @@ La aplicación incorpora una zona privada de gestión destinada a trabajadores a
 
 Desde esta área es posible administrar los distintos elementos de la aplicación mediante una interfaz centralizada y protegida por autenticación.
 
-### Funcionalidades disponibles
+### Funcionalidades disponibles - sistemas CRUD
 
-* Gestión de clientes registrados.
-* Gestión de trabajadores y roles.
-* Gestión de reservas.
-* Gestión de mesas del restaurante.
-* Gestión de la carta de platos.
-* Creación y publicación del menú diario.
-* Moderación de reseñas de clientes.
-* Configuración del contenido dinámico de la página principal.
-
-### Objetivo
-
-Esta zona permite gestionar el funcionamiento diario del restaurante desde una única aplicación, facilitando las tareas administrativas y evitando modificaciones directas en la base de datos.
-
-### Capturas de la zona de gestión
+* Gestión de trabajadores y roles. (Permite el control, acceso y diferentes permisos segun el rol -> jefe, encargado, trabajador)
+* Gestión de reservas. (Permite ver reservas del día, quien la realizó, para que turno... además permite crear reservas manuales)
+* Gestión de crear platos únicos / carta de restaurante. (Permite crear un plato y añdirlo a la carta del restaurante) 
+* Creación y publicación del menú diario. (Permite gestionar la publicación de los menús del día)
+* Gestión de clientes registrados. (Permite visualizar los datos de los clientes registrados de la app)
+* Moderación de reseñas de clientes. (Permite moderar el sistema de reseñas interno de la app)
+* Configuración del contenido dinámico de la página principal. (Permite crear y editar una frase de cabezera en la web -> "feliz navidad")
 
 #### Gestión de clientes
 
@@ -437,7 +433,7 @@ Esta zona permite gestionar el funcionamiento diario del restaurante desde una �
 
 ![Configuración reseñas](assets/img/readme/16Zona_resenas.png)
 
-#### Moderación de reseñas
+#### Moderación de frase web
 
 ![Configurción frase web](assets/img/readme/17Zona_frase.png)
 
@@ -459,7 +455,7 @@ La zona de gestión también incluye adaptación responsive para garantizar su f
 * Panel de administración responsive.
 * Tablas adaptadas para dispositivos móviles.
 
-
+#### Responsive general de la pagina principal
 ![Responsive](assets/img/readme/9MOVIL.WEB.png)
 
 ---
