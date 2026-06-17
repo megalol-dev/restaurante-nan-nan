@@ -328,20 +328,25 @@ La aplicación implementa un sistema de autenticación basado en sesiones PHP pa
 
 ---
 
-## 📅 Sistema de reservas
+## 📅 Zona de clientes (resevas y reseñas)
 
-El módulo de reservas permite:
+El módulo de zona clientes permite reservar mesa y poner reseñas:
 
 * Selección de fecha.
 * Selección de turno (comida o cena).
 * Gestión automática de disponibilidad.
 * Asignación de mesas.
 * Cancelación de reservas.
+* Poner una reseña y editar la sereña.
 
-#### Reseña de los clientes
+#### Crear reservas - cliente
+
+![Reserva](assets/img/readme/3Cliente_reserva.png)
+
+#### Crear reseña - cliente 
 
 ![Reseña](assets/img/readme/2Cliente_resena.png)
-![Reserva](assets/img/readme/3Cliente_reserva.png)
+
 
 ---
 
