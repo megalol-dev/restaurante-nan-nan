@@ -61,10 +61,6 @@ Entre los objetivos principales destacan:
 
 ---
 
-## 🏗️ Arquitectura del proyecto
-
-[CAPTURA 1 - Estructura general de carpetas del proyecto]
-
 ### Organización
 
 ## 🏗️ Arquitectura del proyecto
@@ -301,7 +297,7 @@ La aplicación implementa un sistema de autenticación basado en sesiones PHP pa
 * Protección frente a contraseñas almacenadas en texto plano.
 
 
-[CAPTURA LOGIN]
+![Login](assets/img/readme/LOGIN.png)
 
 ---
 
