@@ -330,6 +330,7 @@ Los clientes pueden consultar el menú actualizado desde la página principal o 
 
 ![Menu](assets/img/readme/4Menu_dia.png)
 ![Carta](assets/img/readme/5Carta_restaurante.png)
+
 ---
 
 ## ⭐ Sistema de reseñas
@@ -343,8 +344,8 @@ Características:
 * Visualización pública.
 * Gestión administrativa.
 
-[CAPTURA RESEÑAS web]
-[CAPTURA RESEÑAS menu]
+![Reseñas](assets/img/readme/6Resenas_web.png)
+![Reseña menu](assets/img/readme/7Resena_menu_web.png)
 
 ---
 
@@ -357,7 +358,7 @@ Características:
 * Menú del día.
 * Reseñas destacadas.
 
-[CAPTURA HOME]
+![Hero](assets/img/readme/8Hero_web.png)
 
 ### Responsive
 
@@ -378,7 +379,7 @@ La zona de gestión también incluye adaptación responsive para garantizar su f
 * Tablas adaptadas para dispositivos móviles.
 
 
-[CAPTURAS MÓVIL]
+![Responsive](assets/img/readme/9MOVIL.WEB.png)
 
 ---
 
