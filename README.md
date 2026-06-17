@@ -358,7 +358,7 @@ Características:
 * Menú del día.
 * Reseñas destacadas.
 
-![Hero](assets/img/readme/8Hero_web.png)
+![Hero](assets/img/readme/8hero_web.png)
 
 ### Responsive
 
