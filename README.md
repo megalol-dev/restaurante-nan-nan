@@ -345,7 +345,7 @@ Características:
 * Gestión administrativa.
 
 ![Reseñas](assets/img/readme/6Resenas_web.png)
-![Reseña menu](assets/img/readme/7Resena_menu_web.png)
+![Reseña menu](assets/img/readme/7Resena_menu.png)
 
 ---
 
