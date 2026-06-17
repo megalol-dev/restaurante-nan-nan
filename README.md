@@ -311,8 +311,8 @@ El módulo de reservas permite:
 * Asignación de mesas.
 * Cancelación de reservas.
 
-[CAPTURA PANEL CLIENTE]
-[CAPTURA RESERVA CREADA]
+![Reseña](assets/img/readme/2Cliente_resena.png)
+![Reserva](assets/img/readme/3Cliente_reserva.png)
 
 ---
 
