@@ -405,15 +405,15 @@ Desde esta área es posible administrar los distintos elementos de la aplicació
 * Moderación de reseñas de clientes. (Permite moderar el sistema de reseñas interno de la app)
 * Configuración del contenido dinámico de la página principal. (Permite crear y editar una frase de cabezera en la web -> "feliz navidad")
 
-#### Gestión de clientes
+#### Panel de control general - opciones disponibles según el rol
 
-![Gestión de clientes](assets/img/readme/10Zona_Gestion.png)
+![Panel de control](assets/img/readme/10Zona_Gestion.png)
 
-#### Gestión de reservas
+#### Gestión crear trabajador
 
-![Gestión de reservas](assets/img/readme/11Zona_Crear_Trabajador.png)
+![Gestión de trabjadadores](assets/img/readme/11Zona_Crear_Trabajador.png)
 
-#### Gestión de mesas
+#### Gestión de reservas online - mesas disponibles - reservas manuales
 
 ![Gestión de mesas](assets/img/readme/12Zona_Reservas.png)
 
