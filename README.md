@@ -468,7 +468,7 @@ Se han realizado pruebas manuales sobre:
 
 Desarrollado por:
 
-**Miguel Ángel ("Megalol")**
+**José Luis Escudero Polo ("Megalol")**
 
 GitHub:
 
