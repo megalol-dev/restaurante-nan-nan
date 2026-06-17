@@ -2,7 +2,7 @@
     <footer class="site-footer">
         <div class="container footer-inner">
             <div>
-                <strong>BAR LOLI</strong><br />
+                <strong>RESTAURANTE ÑAN ÑAN</strong><br />
                 Calle Ejemplo 123, Madrid
             </div>
 
@@ -12,7 +12,7 @@
             </div>
 
             <div>
-                © <span id="year">2026</span> BAR LOLI
+                © <span id="year">2026</span> RESTAURANTE ÑAN ÑAN
             </div>
         </div>
     </footer>
