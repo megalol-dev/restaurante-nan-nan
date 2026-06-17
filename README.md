@@ -328,8 +328,8 @@ El administrador puede:
 
 Los clientes pueden consultar el menú actualizado desde la página principal o ver toda la carta del restaurante.
 
-[CAPTURA MENÚ DEL DÍA]
-[CAPTURA DE LA CARTA]
+![Menu](assets/img/readme/4Menu_dia.png)
+![Carta](assets/img/readme/5Carta_restaurante.png)
 ---
 
 ## ⭐ Sistema de reseñas
