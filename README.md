@@ -328,7 +328,7 @@ La aplicación implementa un sistema de autenticación basado en sesiones PHP pa
 
 ---
 
-## 📅 Zona de clientes (resevas y reseñas)
+## 📅 Zona de clientes (reservas y reseñas)
 
 El módulo de zona clientes permite reservar mesa y poner reseñas:
 
@@ -337,7 +337,7 @@ El módulo de zona clientes permite reservar mesa y poner reseñas:
 * Gestión automática de disponibilidad.
 * Asignación de mesas.
 * Cancelación de reservas.
-* Poner una reseña y editar la sereña.
+* Poner una reseña y editar la reseña.
 
 #### Crear reservas - cliente
 
@@ -357,7 +357,7 @@ El cliente puede ver:
 * Menú diario y fecha del día.
 * Carta del restaurante.
 
-El menú diaria y la carta son editados desde la zona del gestor, el cuál podrá crear platos, añadirlos a la carta y con ellos crear los menús diarios.
+El menú diario y la carta son editados desde la zona del gestor, el cuál podrá crear platos, añadirlos a la carta y con ellos crear los menús diarios.
 
 #### Ver menú del día
 ![Menu](assets/img/readme/4Menu_dia.png)
@@ -381,13 +381,13 @@ Características:
 #### Ver últimas reseñas en la web
 ![Reseñas](assets/img/readme/6Resenas_web.png)
 
-#### Ver todas las reseñas y filtar
+#### Ver todas las reseñas y filtrar
 ![Reseña menu](assets/img/readme/7Resena_menu.png)
 
 ---
 
 ## 🎨 Interfaz de los gestores 
-* El gestor y trabajadores pueden ver las siguiente secciones.
+* Los gestores y trabajadores pueden ver las siguientes secciones.
 
 ## ⚙️ Panel de Administración
 
@@ -397,13 +397,13 @@ Desde esta área es posible administrar los distintos elementos de la aplicació
 
 ### Funcionalidades disponibles - sistemas CRUD
 
-* Gestión de trabajadores y roles. (Permite el control, acceso y diferentes permisos segun el rol -> jefe, encargado, trabajador)
+* Gestión de trabajadores y roles. (Permite el control, acceso y diferentes permisos según el rol -> jefe, encargado, trabajador)
 * Gestión de reservas. (Permite ver reservas del día, quien la realizó, para que turno... además permite crear reservas manuales)
-* Gestión de crear platos únicos / carta de restaurante. (Permite crear un plato y añdirlo a la carta del restaurante) 
+* Gestión de crear platos únicos / carta de restaurante. (Permite crear un plato y añadirlo a la carta) 
 * Creación y publicación del menú diario. (Permite gestionar la publicación de los menús del día)
 * Gestión de clientes registrados. (Permite visualizar los datos de los clientes registrados de la app)
 * Moderación de reseñas de clientes. (Permite moderar el sistema de reseñas interno de la app)
-* Configuración del contenido dinámico de la página principal. (Permite crear y editar una frase de cabezera en la web -> "feliz navidad")
+* Configuración del contenido dinámico de la página principal. (Permite crear y editar una frase de cabecera -> "feliz navidad")
 
 #### Panel de control general - opciones disponibles según el rol
 
@@ -433,9 +433,9 @@ Desde esta área es posible administrar los distintos elementos de la aplicació
 
 ![Configuración reseñas](assets/img/readme/16Zona_resenas.png)
 
-#### Moderación de frase web
+#### Gestión de la frase web
 
-![Configurción frase web](assets/img/readme/17Zona_frase.png)
+![Configuración frase web](assets/img/readme/17Zona_frase.png)
 
 ---
 
@@ -538,6 +538,20 @@ Se han realizado pruebas manuales sobre:
 * Integración con TPV.
 * Dashboard analítico.
 * Sistema de promociones.
+
+---
+
+## 🏆 Principales aprendizajes
+
+Durante el desarrollo de este proyecto se han trabajado conceptos como:
+
+* Desarrollo Full Stack con PHP y JavaScript.
+* Diseño y modelado de bases de datos relacionales.
+* Gestión de sesiones y control de acceso por roles.
+* Creación de APIs REST.
+* Diseño responsive para dispositivos móviles.
+* Gestión de proyectos mediante Git y GitHub.
+* Organización modular de aplicaciones web.
 
 ---
 
