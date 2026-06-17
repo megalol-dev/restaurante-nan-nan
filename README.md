@@ -274,7 +274,7 @@ Las relaciones permiten gestionar reservas, asignación de mesas, publicación d
 ## 🎨 Interfaz de usuario
 * El usuario puede ver las siguiente secciones.
 
-### Página principal
+### Contenido de la página principal
 
 * Reservas y registro.
 * Hero dinámico - carrusel de platos.
@@ -282,7 +282,20 @@ Las relaciones permiten gestionar reservas, asignación de mesas, publicación d
 * Carta del restaurante.
 * Reseñas destacadas y ver todas las reseñas.
 
+---
+
+### 🖼️ Hero dinámico
+
+La página principal incorpora un hero dinámico que rota automáticamente cada pocos segundos, mostrando algunos de los platos más destacados del restaurante.
+
+Este elemento busca mejorar la experiencia visual del usuario y ofrecer una presentación atractiva de la oferta gastronómica desde el primer momento.
+
+#### Hero de la web
+
 ![Hero](assets/img/readme/8hero_web.png)
+
+---
+
 
 ## 🔐 Sistema de autenticación
 
@@ -309,6 +322,7 @@ La aplicación implementa un sistema de autenticación basado en sesiones PHP pa
 * Restricción de funcionalidades según el rol del usuario.
 * Protección frente a contraseñas almacenadas en texto plano.
 
+#### Login para clientes / trabajadores
 
 ![Login](assets/img/readme/LOGIN.png)
 
@@ -323,6 +337,8 @@ El módulo de reservas permite:
 * Gestión automática de disponibilidad.
 * Asignación de mesas.
 * Cancelación de reservas.
+
+#### Reseña de los clientes
 
 ![Reseña](assets/img/readme/2Cliente_resena.png)
 ![Reserva](assets/img/readme/3Cliente_reserva.png)
