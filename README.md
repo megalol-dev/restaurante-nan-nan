@@ -555,15 +555,16 @@ Durante el desarrollo de este proyecto se han trabajado conceptos como:
 
 ---
 
-## 👨‍💻 Autor
+# 📫 Contacto
 
-Desarrollado por:
+📧 Email: **escuderopolojoseluis@gmail.com**
 
-**José Luis Escudero Polo ("Megalol")**
+🌐 Portfolio: https://megalol-dev.github.io/
 
-GitHub:
+💼 LinkedIn: https://linkedin.com/in/jose-luis-escudero-polo
 
-https://github.com/megalol-dev
+
+📺 YouTube: https://www.youtube.com/@Megalol-dev
 
 ---
 
