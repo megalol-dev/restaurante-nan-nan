@@ -563,7 +563,6 @@ Durante el desarrollo de este proyecto se han trabajado conceptos como:
 
 💼 LinkedIn: https://linkedin.com/in/jose-luis-escudero-polo
 
-
 📺 YouTube: https://www.youtube.com/@Megalol-dev
 
 ---
