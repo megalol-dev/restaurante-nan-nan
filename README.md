@@ -730,4 +730,4 @@ Proyecto desarrollado con fines de portfolio. Proyecto privado sin autorización
 
 💼 LinkedIn: https://linkedin.com/in/jose-luis-escudero-polo
 
-📺 YouTube: https://youtu.be/QqcfqjKi-Zk
+📺 YouTube: https://youtu.be/ZGpqeSNQ4bs?si=VshoPe5V23zBqwy8
