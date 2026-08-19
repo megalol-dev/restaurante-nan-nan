@@ -72,11 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             const res = await fetch("/BarApp/api/login_api.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payload),
             });
 
             const data = await res.json();
